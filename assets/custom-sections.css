@@ -75,6 +75,7 @@
     background-size: 200% 100%; 
     background-position: right; 
     transition: background-position 1s ease-in-out;
+    color:black;
   }
   
   .hero-button-top:hover {

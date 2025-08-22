@@ -1,8 +1,20 @@
-<div class="hero-gift-guide" style="background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | img_url: '2000px' }}{% endif %}')">
+<div class="hero-gift-guide" style="background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | img_url: '2000x' }}{% endif %}')">
   <div class="hero-content">
+  < !-- Top Row -->
+  <div class="hero-top-row">
+     <div class="hero-logo">{{section.settings.logo}}</div>
+     <div class=""hero-top-subtitle>{{section.settings.top_subtitle}}</div>
+     <div class="hero-button-top">
+        <a href="{{section.settings.button_link_top}}" class="button-top">{{section.settings.button_text_top}}</a>
+     </div>
+  </div>
+  <!-- content -->
     <h1 class="hero-title">{{ section.settings.title }}</h1>
     <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
     <a href="{{ section.settings.button_link }}" class="hero-button">{{ section.settings.button_text }}</a>
+
+    <!-- footer -->
+    <div class="hero-footer-text">{{section.settings.footer_text}}</div>
   </div>
 </div>
 
@@ -15,10 +27,34 @@
       "id": "background_image",
       "label": "Background Image"
     },
+     {
+      "type": "text",
+      "id": "logo",
+      "label": "logo",
+      "default": "TISSO VISON"
+    },
+     {
+      "type": "text",
+      "id": "top-subtitle",
+      "label": "Top subtitle",
+      "default": "Find the ideal gift for your loved ones"
+    },
+     {
+      "type": "url",
+      "id": "button_top_link",
+      "label": "Button Top Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "button_text_top",
+      "label": "Button Text Top",
+      "default": "CHOOSE GIFT →"
+    },
     {
       "type": "text",
       "id": "title",
-      "label": "Title",
+      "label": "Main Title",
       "default": "The Gift Guide"
     },
     {
@@ -38,6 +74,12 @@
       "id": "button_text",
       "label": "Button Text",
       "default": "SHOP NOW →"
+    },
+     {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
     }
   ],
   "presets": [

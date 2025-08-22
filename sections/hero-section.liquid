@@ -1,0 +1,50 @@
+<div class="hero-gift" style="background-image: url('{% if section.settings.background_image%}{{section.settings.background_image |img_url:'2000px'}}{% end if %}')">
+ <div class="hero-content">
+    <h1 class="hero-title">{{section.settings.title}}</h1>
+    <p class="hero-subtitle">{{section.settings.subtitle}}</p>
+    <a href=""{{section.settings.button_link}} class="hero-button">{{section.settings.button_text}}</a>
+ </div>
+</div>
+
+{% schema %}
+
+{
+    "name":"ImageRelation Hero Gift Guide",
+    "settings":[
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background Image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "The Gift Guide"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "subtitle",
+            "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link",
+            "default": "/collections/all"
+        },
+        { 
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop Now"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Hero Gift Guide"
+        }
+    ]
+}
+{% end schema %}

@@ -1,4 +1,52 @@
 /* --- Styles for Hero Gift Guide Section --- */
+
+.hero-top-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 10px 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.hero-logo{
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+}
+
+.hero-top-subtitle{
+    font-size: 0.8rem;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.hero-button-top{
+    background: #FFD700;
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    background: linear-gradient(to left, #FFD700 50%, #000 50%); 
+    background-size: 200% 100%; 
+    background-position: right; 
+    transition: background-position 1s ease-in-out;
+    text-decoration: none; 
+    display: inline-block;
+}
+.hero-button-top:hover{
+    background-position: left;
+    color:white;
+    transform: translateY(-2px);
+}
 .hero-gift-guide{
     width:100%;
     height:800px;
@@ -9,7 +57,7 @@
     justify-content: center;
     color: white;
     position: relative;
-
+overflow: hidden;
 }
 
 .hero-gift-guide::before{
@@ -28,6 +76,7 @@
     z-index: 2;
     max-width: 800px;
     padding: 20px;
+    position: relative;
 }
 
 .hero-subtitle{
@@ -48,7 +97,7 @@ font-weight: bold;
     padding: 12px 24px;
     transition: all 0.3s;
     font-size: 1rem;
-    background: linear-gradient(to left, #000 50%, #e5ff00 50%); 
+    background: linear-gradient(to left, #000 50%, #FFD700 50%); 
     background-size: 200% 100%; 
     background-position: right; 
     transition: background-position 1s ease-in-out;
@@ -59,4 +108,41 @@ font-weight: bold;
     background-position: left;
     color:black;
     transform: translateY(-2px);
+}
+
+.hero-footer-text{
+    font-size: 0.8rem;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+}
+
+
+/* Responsive */
+
+@media(max-width:768px){
+    .hero-gift-guide{
+        height: 600px;
+    }
+    .hero-title{
+        font-size: 2.2rem;
+    }
+    .hero-subtitle{
+        font-size: 1rem;
+    }
+    .hero-top-row{
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    .hero-button-top{
+        width: 100%;
+        text-align: center;
+    }
+    .hero-button{
+        width: 100%;
+        max-width: 200px;
+    }
 }

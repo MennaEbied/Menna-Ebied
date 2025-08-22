@@ -48,14 +48,15 @@ font-weight: bold;
     padding: 12px 24px;
     transition: all 0.3s;
     font-size: 1rem;
-    background: linear-gradient(to right, #000 50%, #e5ff00 50%); 
+    background: linear-gradient(to left, #000 50%, #e5ff00 50%); 
     background-size: 200% 100%; 
-    background-position: left; 
-    transition: background-position 1s ease-in-out; 
+    background-position: right; 
+    transition: background-position 1s ease-in-out;
+    text-decoration: none; 
 }
 
 .hero-button:hover{
-    background-position: right;
+    background-position: left;
     color:black;
     transform: translateY(-2px);
 }

@@ -1,0 +1,46 @@
+<div class="custom-top-bar">
+  <div class="top-row">
+    <div class="top-logo">{{ section.settings.logo_text }}</div>
+    <div class="top-subtitle">{{ section.settings.subtitle }}</div>
+    <div class="top-button">
+      <a href="{{ section.settings.button_link }}" class="button-top">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": " Top Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/gifts"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "CHOOSE GIFT →"
+    }
+  ],
+  "presets": [
+    {
+      "name": " Top Bar"
+    }
+  ]
+}
+{% endschema %}

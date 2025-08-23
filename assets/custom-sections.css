@@ -1,102 +1,37 @@
 /* === HERO SECTION === */
 .hero-gift-guide {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
     position: relative;
-    padding:20px;
-    height: 390px;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  display: block;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black; /* Text color for clarity */
-  overflow: hidden;
-  }
-  
-  /* === TOP ROW === */
-  .hero-top-row {
     display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 10px 0;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: white;
-  background: transparent;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  .hero-logo {
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
     color: black;
-    text-transform: uppercase;
+    overflow: hidden;
   }
   
-  .hero-subtitle-top {
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 0.8rem;
-    color: #333;
-    text-align: center;
-    margin: 0;
-  }
-  
-  .button-top {
-    border: none;
-    padding: 8px 16px;
-    font-size: 1rem;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    transition: all 0.3s;
-    background: linear-gradient(to left, #FFD700 50%, #000 50%); 
-    background-size: 200% 100%; 
-    background-position: right; 
-    transition: background-position 1s ease-in-out;
-    color:black;
-  }
-  
-  .button-top:hover {
-    background-position: left;
-    color:white;
-    transform: translateY(-2px);
-  }
-  
-  /* === MAIN CONTENT === */
-
   .hero-content {
-    text-align: center;
-    z-index: 2;
-    max-width: 1200px;
-    padding: 20px;
-    position: relative;
-    top: 60px; /* Push down slightly to avoid overlap with top row */
-  }
+  text-align: center;
+  z-index: 2;
+  max-width: 1200px;
+  padding: 20px;
+}
 
-  .hero-title {
-    font-size: 2.5rem;
-    margin: 0 0 1rem;
-    font-weight: bold;
-    line-height: 1.2;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  }
-  
-  .hero-subtitle {
+.hero-title {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.hero-subtitle {
     font-size: 1.1rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   }
-  
   .hero-button {
     display: inline-block;
     border: none;
@@ -106,18 +41,70 @@
     color: white;
     padding: 12px 24px;
     transition: all 0.3s;
-    background: linear-gradient(to left, #000 50%, #FFD700 50%); 
-    background-size: 200% 100%; 
-    background-position: right; 
+    background: linear-gradient(to left, #000 50%, #FFD700 50%);
+    background-size: 200% 100%;
+    background-position: right;
     transition: background-position 1s ease-in-out;
-    text-decoration: none; 
+    text-decoration: none;
   }
-  
   .hero-button:hover {
     background-position: left;
-    color:black;
+    color: black;
+    transform: translateY(-2px);
+  
+  }
+  /* === TOP ROW === */
+.custom-top-bar {
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 10px 0;
+  }
+  
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  
+  .top-logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+  }
+  
+  .top-subtitle {
+    font-size: 0.8rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .button-top {
+    background: linear-gradient(to left, #FFD700 50%, #000 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: background-position 1s ease-in-out;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .button-top:hover {
+    background-position: left;
+    color: white;
     transform: translateY(-2px);
   }
+  
+
   
   /* === FOOTER TEXT === */
   .hero-footer-text {
@@ -142,20 +129,17 @@
     .hero-subtitle {
       font-size: 1rem;
     }
-  
-    .hero-top-row {
-      flex-direction: column;
-      gap: 10px;
-      padding: 10px;
-    }
-  
-    .button-top {
-      width: 100%;
-      text-align: center;
-    }
-  
     .hero-button {
       width: 100%;
       max-width: 200px;
     }
-  }
+    .top-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+    
+      .button-top {
+        width: 100%;
+        text-align: center;
+      }
+    }

@@ -1,20 +1,8 @@
 <div class="hero-gift-guide" style="background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | img_url: '2000x' }}{% endif %}')">
   <div class="hero-content">
-    <!-- Top Row -->
-    <div class="hero-top-row">
-      <div class="hero-logo">{{ section.settings.logo_text }}</div>
-      <div class="hero-subtitle-top">{{ section.settings.subtitle_top }}</div>
-      <div class="hero-button-top">
-        <a href="{{ section.settings.button_link_top }}" class="button-top">{{ section.settings.button_text_top }}</a>
-      </div>
-    </div>
-
-    <!-- Main Content -->
     <h1 class="hero-title">{{ section.settings.title }}</h1>
     <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
     <a href="{{ section.settings.button_link }}" class="hero-button">{{ section.settings.button_text }}</a>
-
-    <!-- Footer Text -->
     <div class="hero-footer-text">{{ section.settings.footer_text }}</div>
   </div>
 </div>
@@ -27,29 +15,6 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
-    },
-    {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Logo Text",
-      "default": "TISSO VISON"
-    },
-    {
-      "type": "text",
-      "id": "subtitle_top",
-      "label": "Top Subtitle",
-      "default": "Find the ideal gift for your loved ones."
-    },
-    {
-      "type": "url",
-      "id": "button_link_top",
-      "label": "Top Button Link"
-    },
-    {
-      "type": "text",
-      "id": "button_text_top",
-      "label": "Top Button Text",
-      "default": "CHOOSE GIFT →"
     },
     {
       "type": "text",
@@ -66,12 +31,13 @@
     {
       "type": "url",
       "id": "button_link",
-      "label": "Main Button Link"
+      "label": "Button Link",
+      "default": "/collections/all"
     },
     {
       "type": "text",
       "id": "button_text",
-      "label": "Main Button Text",
+      "label": "Button Text",
       "default": "SHOP NOW →"
     },
     {

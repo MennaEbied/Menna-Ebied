@@ -135,7 +135,17 @@
     transform: translateY(-2px);
   }
   
-
+  .top-svg-icon {
+    stroke: black;
+    fill: none;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: stroke 0.3s ease;
+  }
+  
+  .top-svg-icon:hover {
+    stroke: white;
+  }
   
   /* === FOOTER TEXT === */
   .custom-footer {

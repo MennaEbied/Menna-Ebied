@@ -61,14 +61,17 @@
 }
 
 .svg-icon {
-  fill: white;
+  stroke: white;
+  fill: none;
   margin-left: 6px;
   vertical-align: middle;
-  transition: fill 0.3s ease;
+  transition: stroke 0.3s ease;
 }
- .svg-icon:hover{
-  fill:black;
+
+.svg-icon:hover {
+  stroke: black;
 }
+
 /* === RIGHT IMAGE === */
 .hero-right-image {
   width: 50%;

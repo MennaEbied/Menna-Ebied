@@ -7,6 +7,8 @@
 
 <!-- content section -->
   <div class="hero-content-section">
+
+  <!-- text & button -->
     <div class="hero-content">
         <h1 class="hero-title">{{ section.settings.title }}</h1>
         <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
@@ -16,6 +18,11 @@
             <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
+  </div>
+
+  <!-- right image -->
+  <div class="hero-right-image">
+  <img class="right-img" alt="right image" src="{% if section.settings.right_image %}{{section.settings.right_image | img_url:'1024x'}}{%endif%}"/>
   </div>
 </div>
 </div>
@@ -28,6 +35,11 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "right image"
     },
     {
       "type": "text",

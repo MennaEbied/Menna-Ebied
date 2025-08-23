@@ -22,10 +22,12 @@
 
   /* === HERO CONTENT SECTION === */
   .hero-content-section{
+    display: flex;
     padding: 20px 0;
+    gap: 20px;
   }
 .hero-content {
-  text-align: left;
+  flex: 1;
   max-width: 600px;
   margin-left: 20px;
   color: black;
@@ -73,6 +75,19 @@
 
 .svg-icon:hover {
   stroke: black;
+}
+
+  /* === RIGHT IMAGE === */
+.hero-right-image{
+  flex: 1;
+  max-width: 400px;
+  margin-right: 20px;
+  overflow: hidden;
+}
+.right-img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 
   /* === TOP ROW === */
@@ -161,7 +176,17 @@
     .hero-top-image {
       height: 300px;
     }
-  
+    .hero-content-section{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-content{
+      margin-left: 0;
+    }
+    .hero-right-image{
+      max-width: 300px;
+    }
     .hero-title {
       font-size: 2.2rem;
     }

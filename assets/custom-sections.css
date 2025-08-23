@@ -1,14 +1,11 @@
 /* === HERO SECTION === */
 .hero-gift-guide {
-    width: 100%;
-    min-height: 100vh;
-    background-size:cover;
-    background-position: center;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    display: flex;
-    padding:20px
+    padding:20px;
+    height: 390px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: block;
   }
   
   /* === TOP ROW === */

@@ -1,19 +1,34 @@
 /* === HERO SECTION === */
 .hero-gift-guide {
-  width:100vw;
-  height: 400px;
-  background-position:top;
-  display: flex;
-  align-items: center;
-  color: black;
-  overflow: hidden;
+  width: 100%;
+  position: relative;
 }
-  
+
+  /* === TOP IMAGE ===*/
+  .hero-top-image{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-position: top;
+    background-size: cover;
+  }
+
+  .hero-bg-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* === HERO CONTENT SECTION === */
+  .hero-content-section{
+    padding: 40px 0;
+  }
 .hero-content {
   text-align: left;
-  z-index: 2;
   max-width: 600px;
-  padding: 80px 20px 20px 80px;
+  margin-left: 20px;
+  color: black;
 }
 
 .hero-title {
@@ -143,8 +158,8 @@
   
   /* === RESPONSIVE === */
   @media (max-width: 768px) {
-    .hero-gift-guide {
-      height: 600px;
+    .hero-top-image {
+      height: 300px;
     }
   
     .hero-title {

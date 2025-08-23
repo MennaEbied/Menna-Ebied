@@ -45,6 +45,7 @@
       "name": "Hero Gift Guide",
       "settings": {
         "background_image": "shopify://shop_images/Frame.png",
+        "right_image": "shopify://shop_images/frame2.png",
         "title": "The Gift Guide",
         "subtitle": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
         "button_link": "",

@@ -33,13 +33,13 @@
 }
 
 .hero-title {
-  font-size:x-large;
+  font-size:xx-large;
   margin: 0 0 1rem;
   font-weight: bold;
   line-height: 1.2;
 }
 .hero-subtitle {
-  font-size:larger;
+  font-size:medium;
   line-height: 1.5;
   margin-bottom: 1.5rem;
 }

@@ -10,15 +10,14 @@
     height: 400px;
     overflow: hidden;
     background-position: top;
-    background-size: cover;
-    margin-bottom: 60px;
+    padding-bottom: 60px;
   }
 
   .hero-bg-img{
-    width: 100%;
+    width: 100vw;
     height: 400px;
     object-fit: cover;
-    object-position: center;
+    object-position:top;
   }
 
   /* === HERO CONTENT SECTION === */

@@ -1,5 +1,6 @@
 /* === HERO SECTION === */
 .hero-gift-guide {
+    position: relative;
     padding:20px;
     height: 390px;
   width: 100%;

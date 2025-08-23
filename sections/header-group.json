@@ -40,13 +40,6 @@
         "button_text": "CHOOSE GIFT"
       }
     },
-    "custom_footer_XxReLz": {
-      "type": "custom-footer",
-      "name": "custom footer",
-      "settings": {
-        "footer_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL."
-      }
-    },
     "hero_gitf_guide_Xk3UYF": {
       "type": "hero-gitf-guide",
       "name": "Hero Gift Guide",
@@ -57,12 +50,19 @@
         "button_link": "",
         "button_text": "SHOP NOW"
       }
+    },
+    "custom_footer_XxReLz": {
+      "type": "custom-footer",
+      "name": "custom footer",
+      "settings": {
+        "footer_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL."
+      }
     }
   },
   "order": [
     "header",
     "top_row_UYKQch",
-    "custom_footer_XxReLz",
-    "hero_gitf_guide_Xk3UYF"
+    "hero_gitf_guide_Xk3UYF",
+    "custom_footer_XxReLz"
   ]
 }

@@ -47,7 +47,6 @@
   position: relative;
   color: white;
   padding: 12px 24px;
-  transition: all 0.3s;
   background: linear-gradient(to left, #000 50%, #FFD700 50%);
   background-size: 200% 100%;
   background-position: right;
@@ -61,12 +60,13 @@
   transform: translateY(-2px);
 }
 
-.hero-button svg {
+.svg-icon {
+  fill: white;
   margin-left: 6px;
   vertical-align: middle;
   transition: all ease 0.3s;
 }
-.hero-button svg:hover{
+ .svg-icon:hover{
   fill:black;
 }
 /* === RIGHT IMAGE === */

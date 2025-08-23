@@ -13,19 +13,21 @@
     background-repeat: no-repeat;
     position: relative;
   }
-.hero-bottom-section {
-  width: 100%;
-  display: flex;
-  padding: 40px 0;
-}
+  .hero-bottom-section {
+    width: 100%;
+    display: flex; 
+    align-items: stretch; 
+    min-height: 600px; 
+  }
 /* === LEFT CONTENT === */
 .hero-content {
+  flex-basis: 50%; /* Make this side take up 50% of the width */
+  padding: 40px 60px; /* Add some space around the text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the text and button */
   text-align: left;
   z-index: 2;
-  max-width: 600px;
-  padding: 20px;
-  flex: 1;
-  margin-left: 20px;
 }
 
 .hero-title {
@@ -44,6 +46,8 @@
 }
 .hero-button {
   display: inline-block;
+  max-width: 200px;
+  display: flex;
   border: none;
   font-size: 1rem;
   font-weight:500;
@@ -78,15 +82,10 @@
 
 /* === RIGHT IMAGE === */
 .hero-right-image {
-  width: 50%;
-  height: 100%;
+  flex-basis: 50%; 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
 }
   /* === TOP ROW === */
 .custom-top-bar {

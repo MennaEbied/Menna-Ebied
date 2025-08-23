@@ -1,8 +1,22 @@
-<div class="hero-gift-guide" style="background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | img_url: '2000x' }}{% endif %}')">
-  <div class="hero-content">
-    <h1 class="hero-title">{{ section.settings.title }}</h1>
-    <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
-    <a href="{{ section.settings.button_link }}" class="hero-button">{{ section.settings.button_text }}</a>
+<div class="hero-gift-guide">
+  <!-- Top Image -->
+  <div class="hero-top-image" style="background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | img_url: '1500x' }}{% endif %}')"></div>
+
+  <!-- Bottom Section -->
+  <div class="hero-bottom-section">
+    <div class="hero-content">
+      <h1 class="hero-title">{{ section.settings.title }}</h1>
+      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+      <a href="{{ section.settings.button_link }}" class="hero-button">
+        {{ section.settings.button_text }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Right Background Image -->
+    <div class="hero-right-image" style="background-image: url('{% if section.settings.right_image %}{{ section.settings.right_image | img_url: '1500x' }}{% endif %}')"></div>
   </div>
 </div>
 
@@ -12,8 +26,13 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
+      "id": "top_image",
+      "label": "Top Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Background Image"
     },
     {
       "type": "text",
@@ -36,8 +55,8 @@
       "type": "text",
       "id": "button_text",
       "label": "Button Text",
-      "default": "SHOP NOW →"
-    },
+      "default": "SHOP NOW"
+    }
   ],
   "presets": [
     {

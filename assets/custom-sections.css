@@ -22,7 +22,7 @@
   /* === HERO CONTENT SECTION === */
   .hero-content-section{
     display: flex;
-    padding: 20px 0;
+    padding: 40px 0;
     gap: 10px;
   }
 .hero-content {
@@ -30,6 +30,7 @@
   max-width: 600px;
   margin-left: 40px;
   color: black;
+  margin-top: 30px;
 }
 
 .hero-title {

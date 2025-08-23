@@ -118,10 +118,8 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    padding: 0 20px;
     font-family: 'Helvetica Neue', sans-serif;
   }
   

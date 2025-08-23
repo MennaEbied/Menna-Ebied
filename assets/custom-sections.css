@@ -107,6 +107,13 @@
 
   
   /* === FOOTER TEXT === */
+  .custom-footer {
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 10px 0;
+  }
   .hero-footer-text {
     font-size: 0.8rem;
     color: #333;

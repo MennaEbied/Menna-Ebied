@@ -1,0 +1,23 @@
+<div class="custom-footer">
+ <div class="hero-footer-text">{{ section.settings.footer_text }}</div>
+</div>
+
+
+    {% schema %}
+{
+  "name": "custom footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL."
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom footer"
+    }
+  ]
+}
+{% endschema %}

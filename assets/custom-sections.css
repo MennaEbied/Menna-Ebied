@@ -47,7 +47,7 @@
     margin: 0;
   }
   
-  .hero-button-top {
+  .button-top {
     border: none;
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -62,7 +62,7 @@
     color:black;
   }
   
-  .hero-button-top:hover {
+  .button-top:hover {
     background-position: left;
     color:white;
     transform: translateY(-2px);
@@ -136,7 +136,7 @@
       padding: 10px;
     }
   
-    .hero-button-top {
+    .button-top {
       width: 100%;
       text-align: center;
     }

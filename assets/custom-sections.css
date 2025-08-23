@@ -64,9 +64,10 @@
 .hero-button svg {
   margin-left: 6px;
   vertical-align: middle;
+  transition: all ease 0.3s;
 }
 .hero-button svg:hover{
-  color:black;
+  fill:black;
 }
 /* === RIGHT IMAGE === */
 .hero-right-image {

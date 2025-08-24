@@ -25,6 +25,7 @@
     gap: 10px;
     margin-top: 15px;
     margin-left: 30px;
+    flex-wrap: wrap;
   }
 .hero-content {
   flex: 1;
@@ -32,6 +33,7 @@
   margin-left: 20px;
   color: black;
   margin-top: -10px;
+  text-align: center;
 }
 
 .hero-title {
@@ -39,11 +41,13 @@
   margin: 0 0 1rem;
   font-weight: bold;
   line-height: 1.2;
+  text-align: center;
 }
 .hero-subtitle {
   font-size:medium;
   line-height: 1.5;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 .hero-button {
   display: inline-block;
@@ -59,6 +63,7 @@
   background-position: right;
   transition: background-position 1s ease-in-out;
   text-decoration: none;
+  margin: 0 auto;
 }
 .hero-button:hover {
   background-position: left;
@@ -182,12 +187,17 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      gap: 20px;
     }
     .hero-content{
       margin-left: 0;
+      max-width: 100%;
+      text-align: center;
     }
     .hero-right-image{
-      max-width: 300px;
+      max-width:100%;
+      margin-right: 0;
+      order: 2;
     }
     .hero-title {
       font-size: 2.2rem;

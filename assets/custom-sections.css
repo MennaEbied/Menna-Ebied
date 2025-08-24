@@ -33,6 +33,7 @@
   margin-left: 20px;
   color: black;
   margin-top: -10px;
+  text-align: left;
 }
 
 .hero-title {
@@ -40,11 +41,13 @@
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 20px;
+  text-align: left;
 }
 .hero-subtitle {
   font-size:medium;
   line-height: 1.5;
   margin-bottom:20px;
+  text-align: left;
 }
 .hero-button {
   display: inline-block;
@@ -178,7 +181,7 @@
   /* === RESPONSIVE === */
   @media (max-width: 768px) {
     .hero-top-image {
-      height: 300px;
+      display: none;
     }
     .hero-content-section{
       flex-direction: column;
@@ -196,18 +199,25 @@
       margin-right: 0;
       order: 2;
     }
+    .right-img{
+      height: 300px;
+    }
     .hero-title {
       font-size: 2.2rem;
-      text-align: center;
     }
   
     .hero-subtitle {
       font-size: 1rem;
-      text-align: center;
     }
     .hero-button {
       width: 100%;
       max-width: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 10;
+      margin: 0 auto;
+      transform: translate(-50%,-50%);
     }
     .top-row {
         flex-direction: column;

@@ -191,8 +191,6 @@
     padding: 20px;
     text-align: center;
     z-index: 10;
-    border-top: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   .mobile-dropdown .top-logo {
     font-weight: bold;

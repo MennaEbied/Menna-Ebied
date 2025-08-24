@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded',function(){
             const imgUrl = product.images[0]?.src
             productEl.innerHTML = `
             <img src="${imgUrl}" alt="${product.title}"/>
-            <button class="view-btn" data-id="${product.id}">+</button>
+            <button class="quick-view-btn" data-id="${product.id}">+</button>
             `
             grid.appendChild(productEl)
         })
         
         // Open card on click
       document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', () => openCard(btn.dataset.id));
+        btn.addEventListener('click', () => console.log("button clicked"));
     })
 });
 

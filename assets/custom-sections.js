@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded',function(){
             `
             grid.appendChild(productEl)
         })
+        
         // Open card on click
       document.querySelectorAll('.quick-view-btn').forEach(btn => {
         btn.addEventListener('click', () => openModal(btn.dataset.id));

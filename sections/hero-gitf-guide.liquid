@@ -11,7 +11,10 @@
   <!-- text & button -->
     <div class="hero-content">
         <h1 class="hero-title">{{ section.settings.title }}</h1>
-        <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+        <p class="hero-subtitle">
+          <span class="desktop-subtitle">{{ section.settings.subtitle_desktop }}</span>
+          <span class="mobile-subtitle">{{ section.settings.subtitle_mobile }}</span>
+        </p>
         <a href="{{ section.settings.button_link }}" class="hero-button">
           {{ section.settings.button_text }}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
@@ -50,8 +53,14 @@
     {
       "type": "text",
       "id": "subtitle",
-      "label": "Subtitle",
+      "label": "Subtitle (Desktop)",
       "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+    "type": "text",
+    "id": "subtitle_mobile",
+    "label": "Subtitle (Mobile)",
+    "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     },
     {
       "type": "url",

@@ -49,6 +49,10 @@
   margin-bottom:20px;
   text-align: left;
 }
+.desktop-subtitle,
+.mobile-subtitle {
+  display: inline;
+}
 .hero-button {
   display: inline-block;
   border: none;
@@ -210,7 +214,9 @@
       font-size: 2.2rem;
       text-align: center;
     }
-  
+    .desktop-subtitle {
+      display: none;
+    }
     .hero-subtitle {
       font-size: 1rem;
       text-align: center;
@@ -248,5 +254,11 @@
       .button-top {
         width: 100%;
         text-align: center;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-subtitle {
+        display: none;
       }
     }

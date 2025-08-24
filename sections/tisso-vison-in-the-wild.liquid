@@ -1,21 +1,22 @@
-<div id="tisso-vison-app" 
-     data-collection-handle="{{ section.settings.products }}"
+<div id="tisso-vison-app">
+<!-- grid -->
+     data-collection-handle="{{ section.settings.collection }}"
      data-section-id="{{ section.id }}">
   <h2 class="tisso-title">{{ section.settings.section_title }}</h2>
   <div class="product-grid" id="product-grid"></div>
 </div>
 
-<!-- Modal -->
-<div id="product-modal" class="modal">
-  <div class="modal-content">
+<!-- card -->
+<div class="card" id="product-card">
+  <div class="card-content">
     <span class="close">&times;</span>
-    <div class="modal-body"></div>
+    <div class="card-body"></div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "ImageRelation Tisso Vison in the Wild",
+  "name": "Grid section",
   "settings": [
     {
       "type": "text",
@@ -24,15 +25,14 @@
       "default": "Tisso vison in the wild"
     },
     {
-      "type": "text",
-      "id": "products",
-      "label": "products",
-      "default": "frontpage"
+      "type":"collection",
+      "id":"collection",
+      "label":"collection"
     }
   ],
   "presets": [
     {
-      "name": "Tisso Vison in the Wild"
+      "name": "Grid section"
     }
   ]
 }

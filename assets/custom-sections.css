@@ -87,6 +87,7 @@
 .hero-right-image{
   flex: 1;
   max-width: 100%;
+  width:100%;
   margin-right: 20px;
   overflow: hidden;
   margin-top: -10px
@@ -202,6 +203,9 @@
       order: 2;
       object-fit: cover;
     }
+    .right-img{
+      height: 300px;
+    }
     .hero-title {
       font-size: 2.2rem;
       text-align: center;
@@ -212,14 +216,29 @@
       text-align: center;
     }
     .hero-button {
+      position: absolute;
+      top: 70%; 
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
       width: 100%;
       max-width: 200px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 10;
       margin: 0 auto;
-      transform: translate(-50%,-50%);
+      background: linear-gradient(to left, #000 50%, #FFD700 50%);
+      background-size: 200% 100%;
+      background-position: right;
+      transition: background-position 1s ease-in-out;
+      text-decoration: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    .hero-button:hover {
+      background-position: left;
+      color: black;
+      transform: translateY(-2px);
     }
     .top-row {
         flex-direction: column;

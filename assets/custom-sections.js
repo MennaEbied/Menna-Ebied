@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded',function(){
         
         // Open card on click
       document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', () => console.log("button clicked"));
+        btn.addEventListener('click', () => openCard(btn.dataset.id));
     })
 });
 

@@ -1,4 +1,13 @@
 <div class="custom-top-bar">
+
+<!-- mobile hamburger menu -->
+<button class="mobile-menu-toggle">
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 30 30" class="menu-icon">
+<path d="M 3 7 A 1.0001 1.0001 0 1 0 3 9 L 27 9 A 1.0001 1.0001 0 1 0 27 7 L 3 7 z M 3 14 A 1.0001 1.0001 0 1 0 3 16 L 27 16 A 1.0001 1.0001 0 1 0 27 14 L 3 14 z M 3 21 A 1.0001 1.0001 0 1 0 3 23 L 27 23 A 1.0001 1.0001 0 1 0 27 21 L 3 21 z"></path>
+</svg>
+</button>
+
+<!-- desktop -->
   <div class="top-row">
     <div class="top-logo">{{ section.settings.logo_text }}</div>
     <div class="top-subtitle">{{ section.settings.subtitle }}</div>
@@ -11,6 +20,20 @@
       </a>
     </div>
   </div>
+
+<!-- mobile -->
+<div class="mobile-dropdown" id="mobile-dropdown">
+<div class="top-logo">{{ section.settings.logo_text }}</div>
+    <div class="top-subtitle">{{ section.settings.subtitle }}</div>
+    <div class="top-button">
+      <a href="{{ section.settings.button_link }}" class="button-top">
+      {{ section.settings.button_text }}
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="top-svg-icon">
+          <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+</div>
+</div>
 </div>
 
 {% schema %}

@@ -107,8 +107,9 @@
     width: 100%;
     background: #f8f7f7;
     padding: 10px 0;
+    position:relative;
   }
-  
+  /* === desktop row === */
   .top-row {
     display: flex;
     justify-content: space-between;
@@ -163,6 +164,67 @@
   .top-svg-icon:hover {
     stroke: white;
   }
+
+  /* === mmobile menu === */
+  .mobile-menu-toggle{
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    color: black;
+  }
+  .menu-icon{
+    width: 24px;
+    height: 24px;
+  }
+  .mobile-dropdown{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background:white;
+    padding: 20px;
+    text-align: center;
+    z-index: 10;
+  }
+  .mobile-dropdown .top-logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+  }
+  
+  .mobile-dropdown .top-subtitle {
+    font-size: 1rem;
+    color: black;
+    text-align: center;
+  }
+  
+  .mobile-dropdown .button-top {
+    background: linear-gradient(to left, #FFD700 50%, #000 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: background-position 1s ease-in-out;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  
+  .mobile-dropdown .button-top:hover {
+    background-position: left;
+    color: white;
+    transform: translateY(-2px);
+  }
+  
   
   /* === FOOTER TEXT === */
   .custom-footer {
@@ -232,10 +294,17 @@
       margin: 0 auto;
     }
     .top-row {
-        flex-direction: column;
-        gap: 10px;
+        display: none;
       }
-    
+    .mobile-menu-toggle{
+      display: block;
+    }
+    .mobile-dropdown{
+      display: none;
+    }
+    .mobile-menu-toggle.active + .mobile-dropdown{
+      display: block;
+    }
       .button-top {
         width: 100%;
         text-align: center;

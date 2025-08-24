@@ -261,13 +261,4 @@
       .mobile-subtitle {
         display: none;
       }
-      .desktop-subtitle {
-        display: inline; 
-      }
-      .hero-subtitle {
-        font-size:medium;
-        line-height: 1.5;
-        margin-bottom:20px;
-        text-align: left;
-      }
     }

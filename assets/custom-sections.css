@@ -230,22 +230,6 @@
       width: 100%;
       max-width: 200px;
       margin: 0 auto;
-      background: linear-gradient(to left, #000 50%, #FFD700 50%);
-      background-size: 200% 100%;
-      background-position: right;
-      transition: background-position 1s ease-in-out;
-      text-decoration: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      touch-action: manipulation;
-    }
-    .hero-button:active{
-      background-position: left;
-      color: black;
-      transform: translateY(-2px);
     }
     .top-row {
         flex-direction: column;

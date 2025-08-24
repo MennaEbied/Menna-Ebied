@@ -180,7 +180,7 @@
   
   /* === RESPONSIVE === */
   @media (max-width: 768px) {
-    .hero-right-image {
+    .hero-top-image {
       display: none;
     }
     .hero-content-section{
@@ -194,7 +194,7 @@
       max-width: 100%;
       text-align: center;
     }
-    .hero-top-image{
+    .hero-right-image{
       max-width:100%;
       height: 100%;
       margin-right: 0;

@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
          
    // Close card
-  closeBtn?.addEventListener('click', () => card.style.display = 'none');
+  closeButton?.addEventListener('click', () => card.style.display = 'none');
   window.addEventListener('click', e => e.target === card && (card.style.display = 'none'));
 
 })

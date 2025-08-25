@@ -37,68 +37,87 @@ document.addEventListener('DOMContentLoaded', async function() {
         grid.innerHTML = `<p style="text-align:center">Error loading products</p>`;
         return;
     }
-
     function openCard(product) {
-        const cardBody = card.querySelector('.card-body');
-        cardBody.innerHTML = `
-          <div class="top-card">
-            <img src="${product.featured_image || product.images[0]?.src}" alt="${product.title}"/>
-            <div class="top-right">
-              <span class="product-title">${product.title}</span>
-              <span class="product-price">$${(product.price / 100).toFixed(2)}</span>
-              <p>${product.description || 'No description available.'}</p>
-            </div>
-          </div>
-          <div class="middle-card">
-            <div class="colors">Color</div>
-            <div class="color-btns"></div>
-            <div class="sizes">Size</div>
-            <div class="sizes-dropdown">
-              <div class="selected">
-                <span class="placeholder">Choose your size</span>
-                <i class="fa-solid fa-chevron-down"></i>
-              </div>
-              <ul class="dropdown-options"></ul>
-            </div>
-          </div>
-          <div class="bottom-card">
-            <button class="add-to-cart-btn"> ADD TO CART <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon"><path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          </div>
-        `;
-
-        const colorContainer = cardBody.querySelector('.color-btns');
-        const sizeDropdown = cardBody.querySelector('.sizes-dropdown');
-        const placeholder = sizeDropdown.querySelector('.placeholder');
-        const optionsList = sizeDropdown.querySelector('.dropdown-options');
-        const colorsNames = [...new Set(product.variants.map(v => v.option1 || v.title))];
-        colorContainer.innerHTML = '';
-        colorsNames.forEach(color => {
-            const btn = document.createElement('button');
-            btn.textContent = color;
-            btn.style.borderLeft = `7px solid ${getHexColor(color)}`;
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.color-btns button').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                selectedColor = color;
-                updateSizes(product.variants, color, optionsList, placeholder, sizeDropdown);
-            });
-            colorContainer.appendChild(btn);
-        });
-
-        if (colorContainer.children.length > 0) {
-            colorContainer.children[0].click();
-        }
-
-        sizeDropdown.querySelector('.selected').addEventListener('click', () => {
-            sizeDropdown.classList.toggle('open');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!sizeDropdown.contains(e.target)) {
-                sizeDropdown.classList.remove('open');
+            if (!product || !product.variants || product.variants.length === 0) {
+                console.error("Invalid product data for openCard", product);
+                return;
             }
-        });
-
+        
+            const cardBody = card.querySelector('.card-body');
+            const firstVariant = product.variants[0]; // Get the first variant for default info
+            const imageUrl = product.featured_image || product.images[0]?.src;
+            
+            // **FIX for Description**: Use body_html and provide a fallback.
+            const descriptionHtml = product.body_html || '<p>No description available.</p>';
+        
+            // **FIX for Price**: Use the variant's price, which is more reliable.
+            cardBody.innerHTML = `
+                <div class="top-card">
+                    <img src="${imageUrl}" alt="${product.title}"  />
+                </div>
+                <div class="modal-content-column">
+                    <h3 class="card-title">${product.title}</h3>
+                    <p class="card-price">$${(firstVariant.price / 100).toFixed(2)}</p>
+                    <div class="card-description">${descriptionHtml.replace(/<[^>]*>?/gm, '').slice(0, 150)}...</div>
+                    <div class="variant-selectors">
+                        <div class="selector-group color-selector">
+                            <label>Color</label>
+                            <div class="color-options"></div>
+                        </div>
+                        <div class="selector-group size-selector">
+                            <label>Size</label>
+                            <select class="size-select"></select>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon"><path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+            `;
+        
+            const colorOptionsContainer = cardBody.querySelector('.color-options');
+            const sizeSelect = cardBody.querySelector('.size-select');
+            const colorSelector = cardBody.querySelector('.color-selector');
+            const sizeSelector = cardBody.querySelector('.size-selector');
+            
+            // **FIX for Swapped Variants**: This new logic finds options by name ("Color", "Size")
+            const colorOptionInfo = product.options.find(opt => opt.name.toLowerCase() === 'color');
+            const sizeOptionInfo = product.options.find(opt => opt.name.toLowerCase() === 'size');
+        
+            const optionsByColor = {};
+            product.variants.forEach(variant => {
+                const color = colorOptionInfo ? variant[`option${colorOptionInfo.position}`] : 'Default';
+                const size = sizeOptionInfo ? variant[`option${sizeOptionInfo.position}`] : null;
+        
+                if (!optionsByColor[color]) optionsByColor[color] = [];
+                if (size) optionsByColor[color].push({ size: size, id: variant.id, available: variant.available });
+            });
+        
+            const availableColors = Object.keys(optionsByColor);
+        
+            if (colorOptionInfo && availableColors.length > 0 && availableColors[0] !== 'Default') {
+                colorSelector.style.display = 'block';
+                availableColors.forEach(color => {
+                    const el = document.createElement('div');
+                    el.className = 'color-option';
+                    el.textContent = color;
+                    el.addEventListener('click', () => {
+                        document.querySelectorAll('.color-option').forEach(x => x.classList.remove('active'));
+                        el.classList.add('active');
+                        updateSizes(optionsByColor[color], sizeSelect);
+                    });
+                    colorOptionsContainer.appendChild(el);
+                });
+                if (colorOptionsContainer.children.length > 0) {
+                    colorOptionsContainer.children[0].click();
+                }
+            } else {
+                colorSelector.style.display = 'none';
+                updateSizes(optionsByColor['Default'], sizeSelect);
+            }
+            
+            if (!sizeOptionInfo) {
+              sizeSelector.style.display = 'none';
+            }
+        
         card.style.display = "block";
         overlay.style.display = "block";
         document.body.style.overflow = "hidden";

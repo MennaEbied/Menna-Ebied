@@ -361,6 +361,7 @@
   width: 100%;
   display: flex;
   margin-bottom: 10px;
+  padding-top:12px
 }
 .top-card img{
   width: 45%;

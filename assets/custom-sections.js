@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const overlay = document.querySelector('.overlay-bg');
 
     let allProducts = [];
-    let selectedColor = null;
-    let selectedSize = null;
+    let selectedVariantId = null;
 
     try {
         const res = await fetch(`/collections/${collectionHandle}/products.json`);
@@ -123,6 +122,36 @@ document.addEventListener('DOMContentLoaded', async function() {
         sizeDropdown.querySelector('.selected').addEventListener('click', () => {
             sizeDropdown.classList.toggle('open');
         });
+
+        //add to cart
+        const addToCartBtn = cardBody.querySelector('.add-to-cart-btn')
+        addToCartBtn.addEventListener('click',()=>{
+            if(!selectedVariantId){
+                alert('please select a size')
+                return
+            }
+            addToCartBtn.textContent = "Adding..."
+            const formData ={
+                'items':[{
+                    'id':selectedVariantId,
+                    'quantity':1
+                }]
+            }
+            fetch('/cart/add.js',{
+                method :'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('item added to cart', data)
+                addToCartBtn.textContent='Added'
+            })
+            .catch((error)=>{
+                console.error('error',error)
+                addToCartBtn.textContent = 'Error'
+            })
+        })
     
         card.style.display = "block";
         overlay.style.display = "block";
@@ -132,6 +161,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     function updateSizes(sizes, list, placeholder, sizeDropdown) {
         list.innerHTML = '';
         placeholder.textContent = 'Choose your size';
+        selectedVariantId = null
         
         if (sizes && sizes.length > 0) {
             sizes.forEach(item => {
@@ -140,6 +170,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 li.dataset.variantId = item.id;
                     li.addEventListener('click', () => {
                         placeholder.textContent = item.size;
+                        selectedVariantId = item.id
                         sizeDropdown.classList.remove('open');
                     });
                 list.appendChild(li);

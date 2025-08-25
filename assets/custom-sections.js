@@ -50,78 +50,89 @@ document.addEventListener('DOMContentLoaded',async function(){
         const cardBody = card.querySelector('.card-body')
         const firstVariant = product.variants[0];
         const imageUrl = product.featured_image?.src || product.images[0]?.src 
+        const descriptionHtml = product.body_html || '<p>No description available.</p>';
         cardBody.innerHTML = `
         <img src="${imageUrl}" alt="${product.title}" class="card-image" />
-        <div class=""card-info>
-            <h3 class="card-title">${product.title}</h3>
-            <p class="card-price">$${(firstVariant.price / 100).toFixed(2)}</p>
-            <p class="card-description">${product.description ? product.description.slice(0, 200) + '...' : 'No description available.'}</p>
-
-            <div class="variant-selectors">
-                <div class="selector-group">
-                    <label>color</label>
-                    <div class="color-options"></div>
-                </div>
-                <div class="selector-group">
-                     <label>size</label>
-                     <select class="size-select"><option value="">choose size</option></select>
-                </div>
-            </div>
-            <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
-            <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="card-info">
+          <h3 class="card-title">${product.title}</h3>
+          <p class="card-price">$${(firstVariant.price / 100).toFixed(2)}</p>
+          <div class="card-description">${descriptionHtml.slice(0, 200)}</div>
+          <div class="variant-selectors">
+              <div class="selector-group color-selector">
+                  <label>Color</label>
+                  <div class="color-options"></div>
+              </div>
+              <div class="selector-group size-selector">
+                  <label>Size</label>
+                  <div class="size-options"></div>
+              </div>
+          </div>
+          <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
+              <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg></button>
-        </div>
-        `
-        const colorOptions = cardBody.querySelector('.color-options')
-        const sizeSelect = cardBody.querySelector('.size-select')
+      </div>
+    `;
+    const colorOptionsContainer = cardBody.querySelector('.color-options');
+    const sizeOptionsContainer = cardBody.querySelector('.size-options');
+    const colorSelector = cardBody.querySelector('.color-selector');
+    const sizeSelector = cardBody.querySelector('.size-selector');
 
-        //EXTRACT COLORS AND SIZE
-        const colors = [...new Set(product.variants.map(v => v.title.split(' / ')[0] || v.title))];
-        const sizes = [...new Set(product.variants.map(v => v.title.split(' / ')[1] || v.title))];
-        
-        colors.forEach(color => {
-            const el = document.createElement('div')
-            el.className = 'color-option'
-            el.textContent = color
-            el.dataset.color = color
-            el.addEventListener('click', ()=>{
-                document.querySelectorAll('.color-option').forEach(x =>x.classList.remove('active'))
-                el.classList.add('active')
-                updateSizes(product.variants, color, sizeSelect)
-            })
-            colorOptions.appendChild(el)
-        })
-        // Size dropdown
-        sizes.forEach(size => {
-            const option = document.createElement('option');
-            option.value = size;
-            option.textContent = size;
-            sizeSelect.appendChild(option);
-        });
-
-        // default select first color
-        if(colors.length>0){
-            colorOptions.children[0].click()
+    const options = {};
+    product.variants.forEach(variant => {
+        const color = variant.option1 || 'Default';
+        const size = variant.option2;
+        if (!options[color]) {
+            options[color] = [];
         }
-        card.style.display = 'block'
+        if (size) {
+            options[color].push(size);
+        }
+    });
+        
+    const colors = Object.keys(options);
+    if (colors.length > 1 || (colors.length === 1 && colors[0] !== 'Default')) {
+        colorSelector.style.display = 'block';
+        colors.forEach(color => {
+            const el = document.createElement('div');
+            el.className = 'color-option';
+            el.textContent = color;
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.color-option').forEach(x => x.classList.remove('active'));
+                el.classList.add('active');
+                updateSizes(options[color], sizeOptionsContainer);
+            });
+            colorOptionsContainer.appendChild(el);
+        });
+        // Select first color by default
+        if (colorOptionsContainer.children.length > 0) {
+            colorOptionsContainer.children[0].click();
+        }
+        } else {
+            colorSelector.style.display = 'none';
+            updateSizes(options[colors[0]], sizeOptionsContainer);
+        }
+
+        if (options[colors[0]].length === 0) {
+            sizeSelector.style.display = 'none';
+        }
+
+        card.style.display = 'flex'; 
+}
+    function updateSizes(sizes, container) {
+        container.innerHTML = '';
+        if (sizes && sizes.length > 0) {
+            sizes.forEach(size => {
+                const el = document.createElement('div');
+                el.className = 'size-option';
+                el.textContent = size;
+                el.addEventListener('click', () => {
+                    document.querySelectorAll('.size-option').forEach(x => x.classList.remove('active'));
+                    el.classList.add('active');
+                });
+                container.appendChild(el);
+            });
+        }
     }
-
-      //update sizes
-      function updateSizes(variants, color, selectEl) {
-        selectEl.innerHTML = '<option value="">Choose size</option>';
-        variants
-          .filter(v => v.title.startsWith(color))
-          .forEach(variant => {
-            const size = variant.title.split(' / ')[1] || '';
-            if (size) {
-              const option = document.createElement('option');
-              option.value = variant.id; 
-              option.textContent = size;
-              selectEl.appendChild(option);
-            }
-          });
-      }
-
 
     //create grid
     allProducts.forEach(product => {

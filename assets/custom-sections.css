@@ -334,7 +334,7 @@
   .card-content{
     background: white;
     width: 100%;
-    max-width: 300px; 
+    max-width: 380px; 
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -414,7 +414,7 @@
 .middle-card .color-btns button{
   padding: 8px 16px;
   height: 40px;
-  width: auto;
+  width: 144px;
   background-color: #fff;
   font-weight: 500;
   font-size: 0.9rem;

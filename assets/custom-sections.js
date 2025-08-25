@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded',async function(){
       <div class="modal-content-column">
         <h3 class="card-title">${product.title}</h3>
         <p class="card-price">$${(product.price / 100).toFixed(2)}</p>
-        <div class="card-description">${descriptionHtml.replace(/<[^>]*>?/gm, '').slice(0, 150)}...</div>
+        <div class="card-description">${descriptionHtml.slice(0, 150)}</div>
         <div class="variant-selectors">
           <div class="selector-group color-selector">
             <label>Color</label>

@@ -66,8 +66,9 @@ document.addEventListener('DOMContentLoaded',async function(){
         }
         const cardBody = card.querySelector('.card-body')
         const firstVariant = product.variants[0];
+        const imageUrl = product.featured_image?.src || product.images[0]?.src 
         cardBody.innerHTML = `
-        <img src="${product.featured_image.src}" alt="${product.title}" class="card-image" />
+        <img src="${imageUrl}" alt="${product.title}" class="card-image" />
         <div class=""card-info>
             <h3 class="card-title">${product.title}</h3>
             <p class="card-price">$${(firstVariant.price / 100).toFixed(2)}</p>

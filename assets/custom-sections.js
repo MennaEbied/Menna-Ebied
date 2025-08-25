@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             <img src="${imageUrl}" alt="${product.title}"/>
             <div class="top-right">
               <span class="product-title">${product.title}</span>
-              <span class="product-price">$${(firstVariant.price / 100).toFixed(2)}</span>
+              <span class="product-price">$${firstVariant.price}</span>
               <p>${descriptionHtml.slice(0, 150)}</p>
             </div>
           </div>
@@ -172,6 +172,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 // color names function 
 function getHexColor(colorsNames) {
-    const colorPalette = { 'Black':'#000', 'White':'#fff', 'Red':'#FF0000', 'Green':'#008000', 'Blue':'#1656AD', 'Gray':'#808080', 'Brown':'#401e12', 'Navy':'#000080' };
+    const colorPalette = { 'Blue':'#1656AD','Black':'#000', 'White':'#fff', 'Red':'#FF0000', 'Green':'#008000',  'Gray':'#808080', 'Brown':'#401e12', 'Navy':'#000080' };
     return colorPalette[colorsNames] || '#ccc';
 }

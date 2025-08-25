@@ -398,7 +398,7 @@
 }
 .middle-card .color-btns{
   display: flex;
-  justify-content: center;
+  justify-content:left;
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -420,7 +420,7 @@
 }
 
 .middle-card .color-btns button.active {
-  color: #fff;
+  color: #000;
   border-color: #000;
 }
 .middle-card .sizes{
@@ -447,14 +447,14 @@
 
 .placeholder {
   flex: 1;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   text-align: left;
   color: black;
 }
 
 .selected i {
   color: black;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   transition: transform 0.2s ease; 
 }
 
@@ -484,7 +484,7 @@
   padding: 10px 12px;
   text-align: left;
   cursor: pointer;
-  font-size: 2.2rem; 
+  font-size: 1.8rem; 
   color: black; 
   transition: background-color 0.2s ease;
 }

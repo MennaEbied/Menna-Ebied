@@ -44,29 +44,29 @@ document.addEventListener('DOMContentLoaded',async function(){
         const cardBody = card.querySelector('.card-body');
         const imageUrl = product.featured_image?.src || product.images[0]?.src;
         const descriptionHtml = product.body_html || '<p>No description available.</p>';
-        
-        // **FIX 3: Create a <select> dropdown for size in the HTML**
-        cardBody.innerHTML = `
-          <div class="card-info">
-              <img src="${imageUrl}" alt="${product.title}" class="card-image" />
-              <h3 class="card-title">${product.title}</h3>
-              <p class="card-price">$${(product.price / 100).toFixed(2)}</p>
-              <div class="card-description">${descriptionHtml.slice(0, 200)}</div>
-              <div class="variant-selectors">
-                  <div class="selector-group color-selector">
-                      <label>Color</label>
-                      <div class="color-options"></div>
-                  </div>
-                  <div class="selector-group size-selector">
-                      <label>Size</label>
-                      <select class="size-select"></select>
-                  </div>
-              </div>
-              <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
-                  <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg></button>
+           cardBody.innerHTML = `
+      <div class="modal-image-column">
+        <img src="${imageUrl}" alt="${product.title}" class="card-image" />
+      </div>
+      <div class="modal-content-column">
+        <h3 class="card-title">${product.title}</h3>
+        <p class="card-price">$${(product.price / 100).toFixed(2)}</p>
+        <div class="card-description">${descriptionHtml.replace(/<[^>]*>?/gm, '').slice(0, 150)}...</div>
+        <div class="variant-selectors">
+          <div class="selector-group color-selector">
+            <label>Color</label>
+            <div class="color-options"></div>
           </div>
-        `;
+          <div class="selector-group size-selector">
+            <label>Size</label>
+            <select class="size-select"></select>
+          </div>
+        </div>
+        <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
+            <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg></button>
+      </div>
+    `;
     
         const colorOptionsContainer = cardBody.querySelector('.color-options');
         const sizeSelect = cardBody.querySelector('.size-select');

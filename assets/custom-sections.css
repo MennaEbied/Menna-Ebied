@@ -360,7 +360,7 @@
 }
 .top-card img{
   width: 45%;
-  height: 100%;
+  height: 50%;
   object-fit: cover;
 }
 
@@ -386,7 +386,7 @@
 }
 .top-right p{
   font-weight: 300;
-  font-size: 8px;
+  font-size: 10px;
   margin: 0;
 }
 

@@ -364,6 +364,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .top-right{
@@ -407,8 +408,8 @@
 }
 .middle-card .color-btns button{
   padding: 8px 24px 8px 17px;
-  height: 30px;
-  width: 120px;
+  height: 35px;
+  width: 130px;
   background-color: #fff;
   font-weight: 500;
   font-size: 0.9rem;
@@ -435,6 +436,7 @@
 }
 .sizes-dropdown {
   width: 100%;
+  height: 35px;
   position: relative;
   user-select: none;
 }

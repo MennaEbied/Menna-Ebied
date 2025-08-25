@@ -405,7 +405,7 @@
 .middle-card .color-btns button{
   padding: 8px 24px 8px 17px;
   height: 30px;
-  width: 60px;
+  width: 80px;
   background-color: #fff;
   font-weight: 500;
   font-size: 0.9rem;
@@ -426,7 +426,7 @@
 }
 .middle-card .sizes{
   padding: 5px 0 0 ;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 2.2rem;
   color: black;
 }
@@ -448,7 +448,8 @@
 
 .placeholder {
   flex: 1;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  font-weight: 200;
   text-align: left;
   color: black;
 }

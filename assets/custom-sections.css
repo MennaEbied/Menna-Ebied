@@ -334,17 +334,17 @@
   .card-content{
     background: white;
     width: 100%;
-    max-width: 380px; 
+    max-width: 390px; 
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
-    padding: 25px;
+    padding: 30px;
     box-sizing: border-box;
   }
  .close{
     position: absolute; 
-    top: 15px; 
-    right: 15px; 
+    top: 12px; 
+    right: 12px; 
     cursor: pointer;
     width: 20px; 
     height: 20px;

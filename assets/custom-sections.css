@@ -334,7 +334,7 @@
   .card-content{
     background: white;
     width: 100%;
-    max-width: 380px; 
+    max-width: 300px; 
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -360,7 +360,7 @@
 }
 .top-card img{
   width: 45%;
-  height: 50%;
+  height: 60%;
   object-fit: cover;
 }
 

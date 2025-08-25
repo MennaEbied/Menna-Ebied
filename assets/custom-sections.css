@@ -256,7 +256,7 @@
   /* === GRID SECTION === */
   #tisso-vison-app{
     max-width:1200px;
-    margin:65px auto;
+    margin:60px auto;
     padding: 0 20px;
   }
   .tisso-title{
@@ -281,9 +281,8 @@
   }
   .product-item img{
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
-    display: block;
   }
   .quick-view-btn{
     position: absolute;
@@ -301,26 +300,41 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    z-index: 10;
+    z-index: 5;
   }
 
+  /* === OVERLAY === */
+  .overlay-bg{
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    display: none;
+    background-color: rgba(178, 178, 178, 0.2);
+  }
+  .product-details{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: 300px;
+    height: 450px;
+    background-color: white;
+    color: #000;
+    z-index: 10;
+    display: none;
+    transform: translateX(-50%);
+  }
   /* === CARD === */
   .card{
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   margin: 10px;
+   height: calc(100%-20px);
   }
   .card-content{
     background: white;
     width: 100%;
-    max-width: 380px; /* Adjust width as needed */
+    max-width: 380px; 
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -328,92 +342,157 @@
     box-sizing: border-box;
   }
  .close{
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #888;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
   cursor: pointer;
-  z-index: 10;
+  width: 20px;
+  height: 20px;
  }
- .card-image{
+
+   /* === TOP CARD === */
+.top-card{
+  height: 160px;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.top-card img{
+  width: 45%;
+  height: 100%;
   object-fit: cover;
-  display: block;
-  margin-bottom: 20px;
-  border-radius: 4px;
+}
+
+.top-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  flex: 1;
+}
+.product-title{
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0;
+}
+.product-price{
+  font-weight: 500;
+  margin: 0;
+  font-size: 16px;
+}
+.top-right p{
+  font-weight: 300;
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: normal;
+}
+
+  /* ===  MIDDLE CARD === */
+.middle-card .colors{
+  padding: 10px 0 5px;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: #333;
+}
+.middle-card .color-btns{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.middle-card .color-btns button{
+  width: 50%;
+  height: 40px;
+  background-color: transparent;
+  font-weight: 400;
+  font-style: 20px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.middle-card .color-btns button:hover,
+.middle-card .color-btns button.active{
+  color: #fff;
+  background-color: #000 !important;
+}
+.middle-card .sizes{
+  padding: 5px 0 0 ;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #333;
+}
+.sizes-dropdown{
+  width: 100%;
+  position: relative;
+  user-select: none;
+}
+.selected{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.placeholder{
+  flex:1;
+  font-size: 16px;
+  text-align: left;
+  border-right: 2px solid #000;
+  background-color: transparent;
+  padding: 0 5px;
+}
+ .selected i{
+  padding: 10px;
+  color: black;
+  font-size: 14px;
  }
- .card-title{
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 0 0 8px;
-  color: #000;
- }
- .card-price{
-  font-size: 1.1rem;
-  margin: 0 0 15px;
-  color: #000;
- }
- .card-description{
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin: 0 0 20px;
-  color: #555;
+ .dropdown-options{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid black;
+  border-top: none;
+  background-color: white;
   max-height: 100px;
   overflow-y: auto;
+  display: none;
+  z-index: 10;
  }
-  .selector-group{
-    margin-bottom: 15px;
-  }
-  .selector-group label{
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: #333;
-  }
-  .color-options,
-.size-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.color-option,
-.size-option {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+ .dropdown-options::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+ }
+ .dropdown-options li{
+  padding: 5px;
+  text-align: center;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
-}
-.color-option.active,
-.size-option.active {
-  border-color: #000;
-  background-color: #000;
+ }
+ .dropdown-options li:hover{
+  background-color: black;
   color: white;
+ }
+
+.sizes-dropdown.open .dropdown-options{
+  display: block;
 }
-  .add-to-cart-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+  /* === BOTTOM CARD=== */
+.bottom-card{
+  margin-top: 20px;
+}
+.bottom-card button{
     width: 100%;
-    padding: 14px;
-    background: #000;
-    color: white;
+    height: 45px;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 10px;
-  }
-  .add-to-cart-btn:hover{
-    background: #333;
   }
   .cart-svg-icon{
     margin-left: 8px;

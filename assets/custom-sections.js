@@ -21,8 +21,12 @@ document.addEventListener('DOMContentLoaded',async function(){
     const grid = document.getElementById('product-grid');
     const card = document.getElementById('product-card');
     const closeButton = document.querySelector('.close');
+    const overlay = document.querySelector('.overlay-bg')
 
     let allProducts = []
+    let selectedColor = null
+    let selectedSize = null
+
 
     //fetching all products at once
 
@@ -30,98 +34,120 @@ document.addEventListener('DOMContentLoaded',async function(){
         const res = await fetch(`/collections/${collectionHandle}/products.json`) 
         if(!res.ok) throw new Error("collection not found")
         const data = await res.json()
-        allProducts = data.products
+        allProducts = data.products.slice(0,6) //to get the first 6 products
     }catch(err){
         console.error('failed to load products', err)
         grid.innerHTML= `<p style="text-align:center">Error loading products</p>`
         return
     }
      //open card
-     function openCard(productId) {
-        const product = allProducts.find(p => p.id == productId);
-        if (!product) return;
-    
+     function openCard(product) {
         const cardBody = card.querySelector('.card-body');
-        const imageUrl = product.featured_image?.src || product.images[0]?.src;
-        const descriptionHtml = product.body_html || '<p>No description available.</p>';
+        const firstVariant = product.variants[0]
         cardBody.innerHTML = `
-          <div class="card-info">
-              <img src="${imageUrl}" alt="${product.title}" class="card-image" />
-              <h3 class="card-title">${product.title}</h3>
-              <p class="card-price">$${(product.price / 100).toFixed(2)}</p>
-              <div class="card-description">${descriptionHtml.slice(0, 200)}</div>
-              <div class="variant-selectors">
-                  <div class="selector-group color-selector">
-                      <label>Color</label>
-                      <div class="color-options"></div>
-                  </div>
-                  <div class="selector-group size-selector">
-                      <label>Size</label>
-                      <select class="size-select"></select>
-                  </div>
-              </div>
-              <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
-                  <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg></button>
+          <div class="top-card">
+            <img src="{product.featured_image.src}" alt="{product.title}"/>
+            <div class="top-right">
+                <span class="product-title">${product.title}</span>
+                <span class="product-price">${product.price}</span>
+                <p>${product.description}</p>
+            </div>
+          </div>
+          
+          <div class="middle-card">
+            <div class="colors">color</div>
+            <div class="color-btns">color</div>
+
+            <div class="sizes">Size</div>
+            <div class="sizes-dropdown">
+            <div class="selected">
+                <span class="placeholder">Choose your size</span>
+                <i class="fa-solid fa-chevron-down"></i> 
+            </div>
+            <ul class="dropdown-options"></ul>
+            </div>
+          </div>
+
+          <div class="bottom-card">
+            <button class="add-to-cart-btn"> ADD TO CART <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+            <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></button>
           </div>
         `;
     
-        const colorOptionsContainer = cardBody.querySelector('.color-options');
-        const sizeSelect = cardBody.querySelector('.size-select');
-        const colorSelector = cardBody.querySelector('.color-selector');
-        const sizeSelector = cardBody.querySelector('.size-selector');
-        const colorOptionInfo = product.options.find(opt => opt.name.toLowerCase() === 'color');
-        const sizeOptionInfo = product.options.find(opt => opt.name.toLowerCase() === 'size');
-    
-        const optionsByColor = {};
-        product.variants.forEach(variant => {
-            const color = colorOptionInfo ? variant[ `option${colorOptionInfo.position}` ] : 'Default';
-            const size = sizeOptionInfo ? variant[ `option${sizeOptionInfo.position}` ] : null;
-            
-            if (!optionsByColor[color]) optionsByColor[color] = [];
-            if (size) optionsByColor[color].push({ size: size, id: variant.id, available: variant.available });
-        });
-    
-        const availableColors = Object.keys(optionsByColor);
-    
-        if (colorOptionInfo && availableColors.length > 0 && availableColors[0] !== 'Default') {
-            colorSelector.style.display = 'block';
-            availableColors.forEach(color => {
-                const el = document.createElement('div');
-                el.className = 'color-option';
-                el.textContent = color;
-                el.addEventListener('click', () => {
-                    document.querySelectorAll('.color-option').forEach(x => x.classList.remove('active'));
-                    el.classList.add('active');
-                    updateSizes(optionsByColor[color], sizeSelect);
-                });
-                colorOptionsContainer.appendChild(el);
-            });
-            colorOptionsContainer.children[0]?.click();
-        } else {
-            colorSelector.style.display = 'none';
-            updateSizes(optionsByColor['Default'], sizeSelect);
-        }
+        const colorContainer = cardBody.querySelector('.color-btns');
+        const sizeDropdown = cardBody.querySelector('.size-dropdown');
+        const placeholder = sizeDropdown.querySelector('.placeholder')
+        const optionsList = sizeDropdown.querySelector('.dropdown-options')
         
-        if (!sizeOptionInfo) {
-          sizeSelector.style.display = 'none';
+        //Extract colors
+        const colorsNames = [...new Set(product.variants.mao(v=>v.title.split('/')[0] || v.title))]
+        colorsNames.forEach(color => {
+            const btn = document.createElement('button')
+            btn.textContent = color
+            btn.style.borderLeft = `7px solid ${getHexColor(color)}`
+            btn.addEventListener('click',()=>{
+                document.querySelectorAll('.color-btn button').forEach(b=>b.classList.remove('active'))
+                btn.classList.add('active')
+                selectedColor = color
+                updateSizes(product.variants, color, optionsList)
+            })
+            colorContainer.appendChild(btn)
+        })
+
+        //default select first color
+        if(colorsNames.length>0){
+            colorContainer.children[0].click()
         }
-    
-        card.style.display = 'flex';
+
+        //toggle dropdown
+        sizeDropdown.querySelector('.selected').addEventListener('click',()=>{
+            sizeDropdown.classList.toggle('open')
+        })
+
+        //close on outside
+        document.addEventListener('click',()=>{
+            if(!sizeDropdown.contains(e.target)){
+                sizeDropdown.classList.remove('open')
+            }
+        })
+
+        card.style.display="block"
+        overlay.style.display="block"
+        document.body.style.overflow = "hidden"
     }
         
-    function updateSizes(sizes, selectElement) {
-        selectElement.innerHTML = '<option value="" disabled selected>Choose your size</option>';
-        if (sizes && sizes.length > 0) {
-            sizes.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.id;
-                option.textContent = item.size;
-                option.disabled = !item.available; // Disable unavailable sizes
-                selectElement.appendChild(option);
-            });
-        }
+    function updateSizes(variants, color, list) {
+        list.innerHTML =''
+        variants.filter(v=>v.title.startWith(color)).forEach(variant=>{
+            const size = variant.title.split('/')[1] || ''
+            if(size){
+                const li  = document.createElement('li')
+                li.textContent = size
+                li.dataset.variantId= variant.id
+                li.addEventListener('click',()=>{
+                    placeholder.textContent = size
+                    selectedSize = size
+                    sizeDropdown.classList.remove('open')
+                })
+                list.appendChild(li)
+            }
+        })
     }
+
+    //close card 
+    closeButton?.addEventListener('click',()=>{
+        card.style.display='none'
+        overlay.style.display='none'
+        document.body.style.overflow='auto'
+    })
+     
+    overlay.addEventListener('click',()=>{
+        card.style.display = 'none'
+        overlay.style.display='none'
+        document.body.style.overflow = 'auto'
+    })
+
 
     //create grid
     allProducts.forEach(product => {
@@ -135,12 +161,24 @@ document.addEventListener('DOMContentLoaded',async function(){
         grid.appendChild(productEl)
     })
         // Open card on click
-      document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', () => openCard(btn.dataset.id));
+      document.querySelectorAll('.quick-view-btn').forEach((btn, index) => {
+        btn.addEventListener('click', () => openCard(allProducts[index]));
     })
 
-   // Close card
-  closeButton?.addEventListener('click', () => card.style.display = 'none');
-  window.addEventListener('click', e => e.target === card && (card.style.display = 'none'));
 
 })
+
+//color names
+function getHexColor(colorsNames){
+    const colorPalette = {
+        'Black':'#000',
+        'White':'#fff',
+        'Red':'#FF0000',
+        'Green':'#008000',
+        'Blue':'#1656AD',
+        'Gray':'#808080',
+        'Brown':'#401e12',
+        'Navy':'#000080'
+    }
+    return colorPalette[colorsNames] || '#CCCC'
+}

@@ -39,10 +39,9 @@ document.addEventListener('DOMContentLoaded',function(){
             grid.appendChild(productEl)
         })
         
-        const productId = btn.dataset.id;
         // Open card on click
       document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', () => openCard(productId));
+        btn.addEventListener('click', () => openCard(btn.dataset.id));
     })
 });
 

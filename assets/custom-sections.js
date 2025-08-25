@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 // FETCHING PRODUCTS
-document.addEventListener('DOMContentLoaded',function(){
+document.addEventListener('DOMContentLoaded',async function(){
     const app = document.getElementById('tisso-vison-app')
     if(!app) return
 
@@ -22,40 +22,48 @@ document.addEventListener('DOMContentLoaded',function(){
     const card = document.getElementById('product-card');
     const closeButton = document.querySelector('.close');
 
-    fetch(`/collections/${collectionHandle}/products.json`)
-    .then(res => {
-        if(!res.ok) throw new Error(`collection not found: ${collectionHandle}`);
-        return res.json()
+    let allProducts = []
+
+    //fetching all products at once
+
+    try{
+        const res = await fetch(`/collections/${collectionHandle}/products.json`) 
+        if(!res.ok) throw new Error("collection not found")
+        const data = await res.json()
+        allProducts = data.products
+    }catch(err){
+        console.error('failed to load products', err)
+        grid.innerHTML= `<p style="text-align:center">Error loading products</p>`
+        return
+    }
+
+    //create grid
+    allProducts.forEach(product => {
+        const productEl = document.createElement('div')
+        productEl.className = 'product-item'
+        const imgUrl  = product.images[0]?.src
+        productEl.innerHTML=`
+        <img src="${imgUrl}" alt="${product.title}"/>
+        <button class="quick-view-btn" data-id="${product.id}">+</button>
+        `
+        grid.appendChild(productEl)
     })
-    .then(({products})=>{
-        products.forEach(product =>{
-            const productEl = document.createElement('div')
-            productEl.className  = 'product-item'
-            const imgUrl = product.images[0]?.src
-            productEl.innerHTML = `
-            <img src="${imgUrl}" alt="${product.title}"/>
-            <button class="quick-view-btn" data-id="${product.id}">+</button>
-            `
-            grid.appendChild(productEl)
-        })
-        
         // Open card on click
       document.querySelectorAll('.quick-view-btn').forEach(btn => {
         btn.addEventListener('click', () => openCard(btn.dataset.id));
     })
-});
 
     //open card
-    async function openCard(productId){
-        try {
-            const res = await fetch(`/products/${productId}.json`);
-            if (!res.ok) {
-              throw new Error(`Product not found: ${productId}`);
-            }
-        const {product}  = await res.json()
-        if (!product.variants || product.variants.length === 0) {
-            throw new Error('No variants available');
-          }
+    function openCard(productId){
+        const product = allProducts.find(p => p.id == productId)
+        if(!product){
+            alert('no product found ')
+            return
+        }
+        if(!product.variants || product.variants.length ===0){
+            alert("no variant available")
+            return
+        }
         const cardBody = card.querySelector('.card-body')
         const firstVariant = product.variants[0];
         cardBody.innerHTML = `
@@ -102,10 +110,6 @@ document.addEventListener('DOMContentLoaded',function(){
         if(colors.length>0){
             colorOptions.children[0].click()
         }
-    }catch (err) {
-            console.error('Failed to load product:', err);
-            alert('Could not load product details.');
-          }
         
     }
 

@@ -39,18 +39,26 @@ document.addEventListener('DOMContentLoaded',function(){
             grid.appendChild(productEl)
         })
         
+        const productId = btn.dataset.id;
         // Open card on click
       document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', () => openCard(btn.dataset.id));
+        btn.addEventListener('click', () => openCard(productId));
     })
 });
 
     //open card
     async function openCard(productId){
-        const res = await fetch(`/products/${productId}.json`)
+        try {
+            const res = await fetch(`/products/${productId}.json`);
+            if (!res.ok) {
+              throw new Error(`Product not found: ${productId}`);
+            }
         const {product}  = await res.json()
+        if (!product.variants || product.variants.length === 0) {
+            throw new Error('No variants available');
+          }
         const cardBody = card.querySelector('.card-body')
-
+        const firstVariant = product.variants[0];
         cardBody.innerHTML = `
         <img src="${product.featured_image.src}" alt="${product.title}" class="card-image"/>
         <div class=""card-info>
@@ -95,7 +103,10 @@ document.addEventListener('DOMContentLoaded',function(){
         if(colors.length>0){
             colorOptions.children[0].click()
         }
-
+    }catch (err) {
+            console.error('Failed to load product:', err);
+            alert('Could not load product details.');
+          }
         
     }
 

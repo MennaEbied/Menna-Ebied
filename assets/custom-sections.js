@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             availableColors.forEach(color => {
                 const btn = document.createElement('button');
                 btn.textContent = color;
+                btn.style.borderLeft = `7px solid ${getHexColor(color)}`;
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.color-btns button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');

@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 // color names function 
-function getHexColor(colorsNames) {
+function getHexColor(colorNames) {
     const colorPalette = { 'Blue':'#1656AD','Black':'#000', 'White':'#fff', 'Red':'#FF0000', 'Green':'#008000',  'Gray':'#808080', 'Brown':'#401e12', 'Navy':'#000080' };
-    return colorPalette[colorsNames] || '#ccc';
+    return colorPalette[colorNames] || '#ccc';
 }

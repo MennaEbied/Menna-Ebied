@@ -334,21 +334,26 @@
   .card-content{
     background: white;
     width: 100%;
-    max-width: 260px; 
+    max-width: 300px; 
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
-    padding: 20px;
+    padding: 25px;
     box-sizing: border-box;
   }
  .close{
-  display: flex;
-  justify-content: end;
-  padding: 12px;
-  cursor: pointer;
-  width: 22px;
-  height: 22px;
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    cursor: pointer;
+    width: 20px; 
+    height: 20px;
+    color: #888;
+    font-size: 24px;
  }
+ .close:hover {
+  color: #000;
+}
 
    /* === TOP CARD === */
 .top-card{
@@ -407,9 +412,9 @@
   margin-bottom: 10px;
 }
 .middle-card .color-btns button{
-  padding: 8px 24px 8px 17px;
-  height: 35px;
-  width: 140px;
+  padding: 8px 16px;
+  height: 40px;
+  width: auto;
   background-color: #fff;
   font-weight: 500;
   font-size: 0.9rem;
@@ -417,6 +422,7 @@
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
+  border-left-width: 7px;
   transition: all 0.2s ease;
   text-align: center;
 }

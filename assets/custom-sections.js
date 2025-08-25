@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded',async function(){
         <div class=""card-info>
             <h3 class="card-title">${product.title}</h3>
             <p class="card-price">$${(firstVariant.price / 100).toFixed(2)}</p>
-            <p class="card-description">${product.description}</p>
+            <p class="card-description">${product.description ? product.description.slice(0, 200) + '...' : 'No description available.'}</p>
 
             <div class="variant-selectors">
                 <div class="selector-group">
@@ -75,8 +75,9 @@ document.addEventListener('DOMContentLoaded',async function(){
         const colorOptions = cardBody.querySelector('.color-options')
         const sizeSelect = cardBody.querySelector('.size-select')
 
-        //EXTRACT COLORS
-        const colors = [...new Set(product.variants.map(v => v.title.split('/')[0] || v.title))]
+        //EXTRACT COLORS AND SIZE
+        const colors = [...new Set(product.variants.map(v => v.title.split(' / ')[0] || v.title))];
+        const sizes = [...new Set(product.variants.map(v => v.title.split(' / ')[1] || v.title))];
         colors.forEach(color => {
             const el = document.createElement('div')
             el.className = 'color-option'
@@ -89,6 +90,13 @@ document.addEventListener('DOMContentLoaded',async function(){
             })
             colorOptions.appendChild(el)
         })
+        // Size dropdown
+        sizes.forEach(size => {
+            const option = document.createElement('option');
+            option.value = size;
+            option.textContent = size;
+            sizeSelect.appendChild(option);
+        });
 
         // default select first color
         if(colors.length>0){
@@ -98,18 +106,20 @@ document.addEventListener('DOMContentLoaded',async function(){
     }
 
       //update sizes
-      function updateSizes(variants, color, selectEl){
-        selectEl.innerHTML = '<option value="">choose size</option>'
-        variants.filter(v=>v.title.startsWith(color)).forEach(variant=>{
-            const size = variant.title.split('/')[1] || ''
-            if(size){
-                const option = document.createElement('option')
-                option.value = variant.id
-                option.textContent = size
-                selectEl.appendChild(option)
+      function updateSizes(variants, color, selectEl) {
+        selectEl.innerHTML = '<option value="">Choose size</option>';
+        variants
+          .filter(v => v.title.startsWith(color))
+          .forEach(variant => {
+            const size = variant.title.split(' / ')[1] || '';
+            if (size) {
+              const option = document.createElement('option');
+              option.value = variant.id; // ← Must be variant ID
+              option.textContent = size;
+              selectEl.appendChild(option);
             }
-        })
-    }
+          });
+      }
 
 
     //create grid

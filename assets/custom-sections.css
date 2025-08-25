@@ -343,7 +343,7 @@
   }
  .close{
   display: flex;
-  justify-content: flex-start;
+  justify-content:right;
   padding: 10px;
   cursor: pointer;
   width: 20px;
@@ -364,7 +364,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .top-right{
@@ -409,7 +409,7 @@
 .middle-card .color-btns button{
   padding: 8px 24px 8px 17px;
   height: 35px;
-  width: 130px;
+  width: 140px;
   background-color: #fff;
   font-weight: 500;
   font-size: 0.9rem;
@@ -431,7 +431,7 @@
 .middle-card .sizes{
   padding: 5px 0 0 ;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: black;
 }
 .sizes-dropdown {
@@ -453,7 +453,7 @@
 
 .placeholder {
   flex: 1;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 200;
   text-align: left;
   color: black;

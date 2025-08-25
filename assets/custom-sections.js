@@ -94,9 +94,9 @@ document.addEventListener('DOMContentLoaded',async function(){
         if(colors.length>0){
             colorOptions.children[0].click()
         }
-        
+        card.style.display = 'block'; 
     }
-    
+
       //update sizes
       function updateSizes(variants, color, selectEl){
         selectEl.innerHTML = '<option value="">choose size</option>'

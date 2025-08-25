@@ -343,7 +343,7 @@
   }
  .close{
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 10px;
   cursor: pointer;
   width: 20px;
@@ -364,7 +364,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .top-right{

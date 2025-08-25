@@ -37,99 +37,90 @@ document.addEventListener('DOMContentLoaded',async function(){
         return
     }
      //open card
-     function openCard(productId){
-        const product = allProducts.find(p => p.id == productId)
-        if(!product){
-            alert('no product found ')
-            return
-        }
-        if(!product.variants || product.variants.length ===0){
-            alert("no variant available")
-            return
-        }
-        const cardBody = card.querySelector('.card-body')
-        const firstVariant = product.variants[0];
-        const imageUrl = product.featured_image?.src || product.images[0]?.src 
+     function openCard(productId) {
+        const product = allProducts.find(p => p.id == productId);
+        if (!product) return;
+    
+        const cardBody = card.querySelector('.card-body');
+        const imageUrl = product.featured_image?.src || product.images[0]?.src;
         const descriptionHtml = product.body_html || '<p>No description available.</p>';
-        cardBody.innerHTML = `
-        <img src="${imageUrl}" alt="${product.title}" class="card-image" />
-        <div class="card-info">
-          <h3 class="card-title">${product.title}</h3>
-          <p class="card-price">$${(firstVariant.price / 100).toFixed(2)}</p>
-          <div class="card-description">${descriptionHtml.slice(0, 200)}</div>
-          <div class="variant-selectors">
-              <div class="selector-group color-selector">
-                  <label>Color</label>
-                  <div class="color-options"></div>
-              </div>
-              <div class="selector-group size-selector">
-                  <label>Size</label>
-                  <div class="size-options"></div>
-              </div>
-          </div>
-          <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
-              <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg></button>
-      </div>
-    `;
-    const colorOptionsContainer = cardBody.querySelector('.color-options');
-    const sizeOptionsContainer = cardBody.querySelector('.size-options');
-    const colorSelector = cardBody.querySelector('.color-selector');
-    const sizeSelector = cardBody.querySelector('.size-selector');
-
-    const options = {};
-    product.variants.forEach(variant => {
-        const color = variant.option1 || 'Default';
-        const size = variant.option2;
-        if (!options[color]) {
-            options[color] = [];
-        }
-        if (size) {
-            options[color].push(size);
-        }
-    });
         
-    const colors = Object.keys(options);
-    if (colors.length > 1 || (colors.length === 1 && colors[0] !== 'Default')) {
-        colorSelector.style.display = 'block';
-        colors.forEach(color => {
-            const el = document.createElement('div');
-            el.className = 'color-option';
-            el.textContent = color;
-            el.addEventListener('click', () => {
-                document.querySelectorAll('.color-option').forEach(x => x.classList.remove('active'));
-                el.classList.add('active');
-                updateSizes(options[color], sizeOptionsContainer);
-            });
-            colorOptionsContainer.appendChild(el);
+        // **FIX 3: Create a <select> dropdown for size in the HTML**
+        cardBody.innerHTML = `
+          <div class="card-info">
+              <img src="${imageUrl}" alt="${product.title}" class="card-image" />
+              <h3 class="card-title">${product.title}</h3>
+              <p class="card-price">$${(product.price / 100).toFixed(2)}</p>
+              <div class="card-description">${descriptionHtml.slice(0, 200)}</div>
+              <div class="variant-selectors">
+                  <div class="selector-group color-selector">
+                      <label>Color</label>
+                      <div class="color-options"></div>
+                  </div>
+                  <div class="selector-group size-selector">
+                      <label>Size</label>
+                      <select class="size-select"></select>
+                  </div>
+              </div>
+              <button class="add-to-cart-btn">Add to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-svg-icon">
+                  <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg></button>
+          </div>
+        `;
+    
+        const colorOptionsContainer = cardBody.querySelector('.color-options');
+        const sizeSelect = cardBody.querySelector('.size-select');
+        const colorSelector = cardBody.querySelector('.color-selector');
+        const sizeSelector = cardBody.querySelector('.size-selector');
+        const colorOptionInfo = product.options.find(opt => opt.name.toLowerCase() === 'color');
+        const sizeOptionInfo = product.options.find(opt => opt.name.toLowerCase() === 'size');
+    
+        const optionsByColor = {};
+        product.variants.forEach(variant => {
+            const color = colorOptionInfo ? variant[ `option${colorOptionInfo.position}` ] : 'Default';
+            const size = sizeOptionInfo ? variant[ `option${sizeOptionInfo.position}` ] : null;
+            
+            if (!optionsByColor[color]) optionsByColor[color] = [];
+            if (size) optionsByColor[color].push({ size: size, id: variant.id, available: variant.available });
         });
-        // Select first color by default
-        if (colorOptionsContainer.children.length > 0) {
-            colorOptionsContainer.children[0].click();
-        }
+    
+        const availableColors = Object.keys(optionsByColor);
+    
+        if (colorOptionInfo && availableColors.length > 0 && availableColors[0] !== 'Default') {
+            colorSelector.style.display = 'block';
+            availableColors.forEach(color => {
+                const el = document.createElement('div');
+                el.className = 'color-option';
+                el.textContent = color;
+                el.addEventListener('click', () => {
+                    document.querySelectorAll('.color-option').forEach(x => x.classList.remove('active'));
+                    el.classList.add('active');
+                    updateSizes(optionsByColor[color], sizeSelect);
+                });
+                colorOptionsContainer.appendChild(el);
+            });
+            colorOptionsContainer.children[0]?.click();
         } else {
             colorSelector.style.display = 'none';
-            updateSizes(options[colors[0]], sizeOptionsContainer);
+            updateSizes(optionsByColor['Default'], sizeSelect);
         }
-
-        if (options[colors[0]].length === 0) {
-            sizeSelector.style.display = 'none';
+        
+        if (!sizeOptionInfo) {
+          sizeSelector.style.display = 'none';
         }
-
-        card.style.display = 'flex'; 
-}
-    function updateSizes(sizes, container) {
-        container.innerHTML = '';
+    
+        card.style.display = 'flex';
+    }
+        
+    function updateSizes(sizes, selectElement) {
+        selectElement.innerHTML = '<option value="" disabled selected>Choose your size</option>';
         if (sizes && sizes.length > 0) {
-            sizes.forEach(size => {
-                const el = document.createElement('div');
-                el.className = 'size-option';
-                el.textContent = size;
-                el.addEventListener('click', () => {
-                    document.querySelectorAll('.size-option').forEach(x => x.classList.remove('active'));
-                    el.classList.add('active');
-                });
-                container.appendChild(el);
+            sizes.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.size;
+                option.disabled = !item.available; // Disable unavailable sizes
+                selectElement.appendChild(option);
             });
         }
     }

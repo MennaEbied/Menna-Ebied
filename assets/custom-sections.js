@@ -36,25 +36,8 @@ document.addEventListener('DOMContentLoaded',async function(){
         grid.innerHTML= `<p style="text-align:center">Error loading products</p>`
         return
     }
-
-    //create grid
-    allProducts.forEach(product => {
-        const productEl = document.createElement('div')
-        productEl.className = 'product-item'
-        const imgUrl  = product.images[0]?.src
-        productEl.innerHTML=`
-        <img src="${imgUrl}" alt="${product.title}"/>
-        <button class="quick-view-btn" data-id="${product.id}">+</button>
-        `
-        grid.appendChild(productEl)
-    })
-        // Open card on click
-      document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', () => openCard(btn.dataset.id));
-    })
-
-    //open card
-    function openCard(productId){
+     //open card
+     function openCard(productId){
         const product = allProducts.find(p => p.id == productId)
         if(!product){
             alert('no product found ')
@@ -113,10 +96,9 @@ document.addEventListener('DOMContentLoaded',async function(){
         }
         
     }
-
-
-    //update sizes
-    function updateSizes(variants, color, selectEl){
+    
+      //update sizes
+      function updateSizes(variants, color, selectEl){
         selectEl.innerHTML = '<option value="">choose size</option>'
         variants.filter(v=>v.title.startsWith(color)).forEach(variant=>{
             const size = variant.title.split('/')[1] || ''
@@ -128,7 +110,24 @@ document.addEventListener('DOMContentLoaded',async function(){
             }
         })
     }
-         
+
+
+    //create grid
+    allProducts.forEach(product => {
+        const productEl = document.createElement('div')
+        productEl.className = 'product-item'
+        const imgUrl  = product.images[0]?.src
+        productEl.innerHTML=`
+        <img src="${imgUrl}" alt="${product.title}"/>
+        <button class="quick-view-btn" data-id="${product.id}">+</button>
+        `
+        grid.appendChild(productEl)
+    })
+        // Open card on click
+      document.querySelectorAll('.quick-view-btn').forEach(btn => {
+        btn.addEventListener('click', () => openCard(btn.dataset.id));
+    })
+
    // Close card
   closeButton?.addEventListener('click', () => card.style.display = 'none');
   window.addEventListener('click', e => e.target === card && (card.style.display = 'none'));

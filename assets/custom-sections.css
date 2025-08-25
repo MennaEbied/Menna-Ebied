@@ -355,13 +355,15 @@
   height: 160px;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
   margin-bottom: 10px;
 }
 .top-card img{
   width: 45%;
   height: 60%;
   object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .top-right{

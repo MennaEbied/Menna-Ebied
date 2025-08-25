@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             })
             .then(response => response.json())
             .then(data => {
-                alert(`${data.title} added to cart !`)
+               console.log(`${data.title} added to cart !`)
                 addToCartBtn.textContent='Added!'
             })
             .catch((error)=>{

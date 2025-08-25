@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded',async function(){
         //EXTRACT COLORS AND SIZE
         const colors = [...new Set(product.variants.map(v => v.title.split(' / ')[0] || v.title))];
         const sizes = [...new Set(product.variants.map(v => v.title.split(' / ')[1] || v.title))];
+        
         colors.forEach(color => {
             const el = document.createElement('div')
             el.className = 'color-option'
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded',async function(){
         if(colors.length>0){
             colorOptions.children[0].click()
         }
-        card.style.display = 'block'; 
+        card.style.display = 'block'
     }
 
       //update sizes
@@ -114,7 +115,7 @@ document.addEventListener('DOMContentLoaded',async function(){
             const size = variant.title.split(' / ')[1] || '';
             if (size) {
               const option = document.createElement('option');
-              option.value = variant.id; // ← Must be variant ID
+              option.value = variant.id; 
               option.textContent = size;
               selectEl.appendChild(option);
             }

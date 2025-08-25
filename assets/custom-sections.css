@@ -323,16 +323,16 @@
   .card-body{
     background: white;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     position: relative;
     overflow: hidden;
   }
   .card-content{
-    max-width: 500px;
-    padding: 20px;
-    width: 80%;
+    max-width: 300px;
+    padding: 30px;
+    width: 50%;
     border-radius: 15px;
     position: relative;
   }
@@ -344,12 +344,13 @@
   font-size: 30px;
   z-index: 10;
   cursor: pointer;
+  padding-right: 8px;
  }
  .card-image{
   width: 100%;
   object-fit: cover;
   margin-bottom: 20px;
-  border-radius: 15px;
+  border-radius: 5px;
   max-height: 200px;
  }
  .card-title{

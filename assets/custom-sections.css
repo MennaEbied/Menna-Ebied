@@ -343,11 +343,11 @@
   }
  .close{
   display: flex;
-  justify-content:right;
-  padding: 10px;
+  justify-content: end;
+  padding: 12px;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
  }
 
    /* === TOP CARD === */

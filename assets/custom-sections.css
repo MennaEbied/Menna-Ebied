@@ -359,7 +359,7 @@
 }
 .top-card img{
   width: 45%;
-  height: 60%;
+  height: 90%;
   object-fit: cover;
   display: flex;
   justify-content: center;
@@ -408,7 +408,7 @@
 .middle-card .color-btns button{
   padding: 8px 24px 8px 17px;
   height: 30px;
-  width: 100px;
+  width: 120px;
   background-color: #fff;
   font-weight: 500;
   font-size: 0.9rem;

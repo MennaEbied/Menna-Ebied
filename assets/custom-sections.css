@@ -409,7 +409,7 @@
 .middle-card .color-btns{
   display: flex;
   justify-content:left;
-  gap: 10px;
+  gap: 0px;
   margin-bottom: 10px;
 }
 .middle-card .color-btns button{

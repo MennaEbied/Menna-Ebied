@@ -465,8 +465,8 @@
   font-weight: 400;
   text-align: left;
   color: black;
-  border-right: 1px solid #000;
-  padding-right: 10px;
+  border-right: 1px solid #ddd;
+  padding-right: 15px;
 }
 
 .selected .dropdown-arrow-icon {
@@ -530,7 +530,7 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 30px;
   }
   .cart-svg-icon{
     margin-left: 8px;

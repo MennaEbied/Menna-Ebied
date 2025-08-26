@@ -510,11 +510,9 @@
 
 
 .dropdown-options li.disabled {
-  color: #aaa;
-  background-color: #f9f9f9;
   cursor: not-allowed;
   text-decoration: line-through;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .sizes-dropdown.open .dropdown-options {

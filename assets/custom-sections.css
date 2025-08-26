@@ -474,6 +474,7 @@
   font-size: 1.2rem;
   transition: transform 0.2s ease; 
   font-weight: 200;
+  padding-left:5px ;
 }
 
 .dropdown-options {

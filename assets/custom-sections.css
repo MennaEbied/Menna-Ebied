@@ -437,7 +437,7 @@
   border-color: #000;
 }
 .middle-card .sizes{
-  padding: 5px 0 0 ;
+  padding: 10px 0 8px;
   font-weight: 600;
   font-size: 1.1rem;
   color: black;
@@ -450,11 +450,11 @@
 
 .selected {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   border: 1px solid #000; 
-  padding: 10px 12px; 
+  padding: 0; 
   cursor: pointer;
+  height: 40px;
 }
 
 .placeholder {
@@ -462,6 +462,8 @@
   font-size: 1.3rem;
   font-weight: 400;
   text-align: left;
+  padding: 8px 12px;
+  height: 100%;
   color: black;
   border-right: 1px solid #000;
   padding-right: 15px;

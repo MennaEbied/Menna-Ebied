@@ -621,13 +621,12 @@ body{
     }
     .hero-button {
       position: absolute;
-      top: 70%; 
+      top: 70%;
       left: 50%;
-      z-index: 10;
-      width: 100%;
-      max-width: 200px;
-      margin: 0 auto;
-      margin-right: -100px;
+      transform: translate(-50%, 0); 
+    }
+    .hero-button:hover {
+      transform: translate(-50%, -2px); 
     }
     .top-row {
         display: none;

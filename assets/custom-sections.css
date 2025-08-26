@@ -327,10 +327,9 @@
   .card{
    display: flex;
    flex-direction: column;
+   justify-content: space-between;
    margin: 10px;
    height: calc(100%-20px);
-   justify-content: center !important;
-   align-items: center !important;
   }
   .card-content{
     background: white;
@@ -477,7 +476,7 @@
   transition: transform 0.2s ease; 
   font-weight: 200;
   vertical-align: middle;
-  margin-left: 24px;
+  margin-left: 16px;
 }
 
 .dropdown-options {

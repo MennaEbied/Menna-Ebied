@@ -343,8 +343,8 @@
   }
  .close{
     position: absolute; 
-    top: 8px; 
-    right: 10px; 
+    top: 12px; 
+    right: 12px; 
     cursor: pointer;
     width: 20px; 
     height: 20px;

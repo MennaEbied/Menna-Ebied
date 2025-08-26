@@ -329,7 +329,7 @@
    flex-direction: column;
    justify-content: space-between;
    margin: 10px;
-   height: calc(100%-20px);
+   height: calc(100%-30px);
   }
   .card-content{
     background: white;
@@ -365,7 +365,7 @@
 }
 .top-card img{
   width: 45%;
-  height: 90%;
+  height: 100%;
   object-fit: cover;
   display: flex;
   justify-content: center;

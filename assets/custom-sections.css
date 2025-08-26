@@ -231,6 +231,8 @@ body{
     max-width: 280px;
     line-height: 1.5;
     text-align: center;
+    margin-left: auto;   
+    margin-right: auto;
   }
   
   .mobile-dropdown .button-top {

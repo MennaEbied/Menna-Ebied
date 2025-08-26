@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             <img src="${imageUrl}" alt="${product.title}"/>
             <div class="top-right">
               <span class="product-title">${product.title}</span>
-              <span class="product-price">$${firstVariant.price}</span>
+              <span class="product-price">${firstVariant.price}&euro;</span>
               <p>${descriptionHtml.slice(0, 150)}</p>
             </div>
           </div>

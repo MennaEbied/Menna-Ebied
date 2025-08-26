@@ -432,7 +432,8 @@
 }
 
 .middle-card .color-btns button.active {
-  color: #000;
+  color: white;
+  background-color: #000;
   border-color: #000;
 }
 .middle-card .sizes{

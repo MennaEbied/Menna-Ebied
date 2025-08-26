@@ -447,27 +447,26 @@
   height: 30px;
   position: relative;
   user-select: none;
-  border: 1px solid #ddd; 
 }
 
 .selected {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #ddd; 
-  background-color: transparent !important; 
+  border: 1px solid #000; 
   padding: 10px 12px; 
   cursor: pointer;
 }
 
 .placeholder {
   flex: 1;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
   text-align: left;
   color: black;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #000;
   padding-right: 15px;
+  background: #000;
 }
 
 .selected .dropdown-arrow-icon {

@@ -481,7 +481,9 @@
   color: black;
   transition: transform 0.2s ease; 
 }
-
+.sizes-dropdown.open .dropdown-arrow-icon {
+  transform: rotate(180deg);
+}
 .dropdown-options {
   position: absolute;
   top: 100%;
@@ -510,6 +512,8 @@
 
 .dropdown-options li:hover {
   font-weight: bold;
+  background:black;
+  color: white;
 }
 
 

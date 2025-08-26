@@ -198,16 +198,16 @@ body{
   }
   .mobile-dropdown {
     display: none; 
-    position: fixed;
-    top: 100;
+    position: absolute;
+    top: 100%; 
     left: 0;
     width: 100%;
     background: white;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    z-index: 1000;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-top: 1px solid #f0f0f0;
+    box-sizing: border-box;
   }
   .mobile-dropdown .top-logo {
     font-size: 2rem;

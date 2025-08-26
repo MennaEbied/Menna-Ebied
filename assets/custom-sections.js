@@ -7,9 +7,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if(toggle && dropdown){
         toggle.addEventListener('click', function(){
             this.classList.toggle('active');
-            const isVisible = dropdown.style.display === 'flex'
-            dropdown.style.display = isVisible ? 'none' : 'flex'
-            document.body.style.overflow = isVisible ? 'auto' : 'hidden';
+            const isVisible = dropdown.style.display === 'block'
+            dropdown.style.display = isVisible ? 'none' : 'block'
         })
     }
 })

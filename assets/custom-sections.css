@@ -62,6 +62,7 @@ body{
   gap: 15px;
 }
 .mobile-logo{
+  display: none;
   font-size: 1.5rem;
   font-weight: bold;
   color: #000;
@@ -630,6 +631,9 @@ body{
       .button-top {
         width: 100%;
         text-align: center;
+      }
+      .mobile-logo{
+        display: flex;
       }
     #tisso-vision-app{
       margin: 40px auto;

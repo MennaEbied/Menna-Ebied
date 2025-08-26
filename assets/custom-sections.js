@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
             this.classList.toggle('active');
             const isVisible = dropdown.style.display === 'flex'
             dropdown.style.display = isVisible ? 'none' : 'flex'
+            document.body.style.overflow = isVisible ? 'auto' : 'hidden';
         })
     }
 })

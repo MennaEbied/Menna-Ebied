@@ -329,8 +329,8 @@
    flex-direction: column;
    margin: 10px;
    height: calc(100%-20px);
-   justify-content: center; 
-   align-items: center; 
+   justify-content: center !important;
+   align-items: center !important;
   }
   .card-content{
     background: white;

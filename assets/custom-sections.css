@@ -241,24 +241,22 @@ body{
   
   .mobile-dropdown .button-top {
     display: inline-block;
-    background: linear-gradient(to left, #FFD700 50%, #000 50%);
-    background-size: 200% 100%;
-    background-position: right;
-    transition: background-position 1s ease-in-out;
-    color: black;
     border: none;
-    padding: 8px 16px;
+    padding: 14px 28px;
     font-size: 1rem;
     text-decoration: none;
     border-radius: 4px;
-    font-weight: 500;
-    width: 300px;
+    font-weight: bold;
+    color: black;
+    background: linear-gradient(to left, #FFD700 50%, #000 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: background-position 0.6s ease-in-out, color 0.6s ease-in-out;
   }
   
   .mobile-dropdown .button-top:hover {
     background-position: left;
     color: white;
-    transform: translateY(-2px);
   }
   
   

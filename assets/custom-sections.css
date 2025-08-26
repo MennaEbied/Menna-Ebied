@@ -477,11 +477,6 @@
   font-weight: 200;
 }
 
-
-.sizes-dropdown.open .selected .dropdown-arrow-icon {
-    transform: rotate(180deg);
-}
-
 .dropdown-options {
   position: absolute;
   top: 100%;

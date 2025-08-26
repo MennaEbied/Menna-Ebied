@@ -118,10 +118,11 @@ body{
 
   /* === TOP ROW === */
 .custom-top-bar {
-    width: 100%;
-    background: #f8f7f7;
-    padding: 10px 0;
-    position:relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: relative;
   }
   /* === desktop row === */
   .top-row {
@@ -210,20 +211,20 @@ body{
     border-radius: 0;
   }
   .mobile-dropdown .top-logo {
-    font-size: 1.2rem;
-  color: black;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+    font-size: 2rem;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: bold;
   }
   
   .mobile-dropdown .top-subtitle {
-    font-size: 1rem;
-    color: black;
-    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 30px;
+    max-width: 280px;
+    line-height: 1.5;
+    text-align: center;
   }
   
   .mobile-dropdown .button-top {

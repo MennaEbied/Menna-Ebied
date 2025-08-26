@@ -215,6 +215,7 @@ body{
     text-transform: uppercase;
     margin-bottom: 20px;
     font-weight: bold;
+    text-align: center;
   }
   
   .mobile-dropdown .top-subtitle {

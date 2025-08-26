@@ -628,6 +628,7 @@ body{
       width: 100%;
       max-width: 200px;
       margin: 0 auto;
+      margin-right: 50%;
     }
     .top-row {
         display: none;

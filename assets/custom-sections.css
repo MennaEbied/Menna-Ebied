@@ -620,9 +620,13 @@ body{
       text-align: center;
     }
     .hero-button {
-      margin-top: 120px; 
-      max-width: 250px;
-     
+      position: absolute;
+      top: 70%; 
+      left: 50%;
+      z-index: 10;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
     }
     .top-row {
         display: none;

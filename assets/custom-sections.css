@@ -445,7 +445,7 @@
 }
 .sizes-dropdown {
   width: 100%;
-  height: 35px;
+  height: 30px;
   position: relative;
   user-select: none;
 }
@@ -475,7 +475,6 @@
   font-size: 1.2rem;
   transition: transform 0.2s ease; 
   font-weight: 200;
-  padding-left: 8px;
 }
 
 

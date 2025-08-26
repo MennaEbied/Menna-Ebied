@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 colorContainer.appendChild(btn);
             });
             if (colorContainer.children.length > 0) {
-                colorContainer.children[0].click();
+                //colorContainer.children[0].click();
             }
         } else {
             cardBody.querySelector('.colors-label').style.display = 'none';

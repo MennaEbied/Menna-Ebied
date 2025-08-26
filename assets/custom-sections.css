@@ -470,13 +470,16 @@
   background: transparent;
 }
 
-.selected .dropdown-arrow-icon {
+.arrow-container {
+  width: 40px; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.dropdown-arrow-icon {
   color: black;
-  font-size: 1.2rem;
   transition: transform 0.2s ease; 
-  font-weight: 200;
-  vertical-align: middle;
-  margin-left: 5px;
 }
 
 .dropdown-options {

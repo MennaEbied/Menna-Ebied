@@ -483,6 +483,7 @@
   top: 100%;
   left: 0;
   right: 0;
+  text-align: center;
   border: 1px solid black;
   border-top: none;
   background-color: white;

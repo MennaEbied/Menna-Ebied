@@ -426,7 +426,6 @@
   border-left-width: 7px;
   transition: all 0.2s ease;
   text-align: center;
-  margin-bottom: 25px;
 }
 .middle-card .color-btns button:hover {
   border-color: #aaa; 
@@ -458,6 +457,7 @@
   background-color: transparent !important; 
   padding: 10px 12px; 
   cursor: pointer;
+  margin-bottom: 25px;
 }
 
 .placeholder {

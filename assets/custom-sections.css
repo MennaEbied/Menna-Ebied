@@ -134,9 +134,8 @@ body{
     justify-content: space-between; 
     align-items: center;           
     width: 100%;
-    max-width: 1400px; 
     margin: 0 auto;    
-    padding: 0 20px;
+    padding:10px 0;
     background: #f8f7f7;
   }
   

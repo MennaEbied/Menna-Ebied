@@ -444,7 +444,7 @@
 }
 .sizes-dropdown {
   width: 100%;
-  height: 25px;
+  height: 30px;
   position: relative;
   user-select: none;
 }
@@ -460,7 +460,7 @@
 
 .placeholder {
   flex: 1;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
   text-align: left;
   color: black;

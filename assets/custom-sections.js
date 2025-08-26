@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             <div class="sizes-dropdown">
               <div class="selected">
                 <span class="placeholder">Choose your size</span>
-                <i class="fa-solid fa-chevron-down"></i> 
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown-arrow-icon">
+                    <path d="M5 12H19M19 12L12 19M19 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg> 
               </div>
               <ul class="dropdown-options"></ul>
             </div>

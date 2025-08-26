@@ -585,6 +585,8 @@ body{
       flex-direction: column;
       align-items: center;
       text-align: center;
+      margin-left: 0;
+      padding-left: 0;
       gap: 20px;
     }
     .hero-content{

@@ -447,6 +447,7 @@
   height: 30px;
   position: relative;
   user-select: none;
+  border: 1px solid #ddd; 
 }
 
 .selected {

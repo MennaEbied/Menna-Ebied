@@ -127,14 +127,17 @@ body{
   align-items: center;
   padding: 15px 20px;
   position: relative;
+  width: 100%;
+  background-color: #f8f7f7;;
   }
   /* === desktop row === */
   .top-row {
     display: flex;
     justify-content: space-between; 
     align-items: center;           
-    width: 100%;   
-    background: #f8f7f7;
+    width: 100%;
+    margin: 0 auto;    
+    padding:10px 0;
   }
   
   .top-logo {

@@ -131,9 +131,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         //add to cart
         const addToCartBtn = cardBody.querySelector('.add-to-cart-btn')
         addToCartBtn.addEventListener('click',()=>{
-            if(!selectedVariantId){
-                alert('please select a size')
-                return
+            if (hasColorOptions && !selectedColor) {
+                alert('Please select a color.');
+                return;
+            }
+            if (hasSizeOptions && !selectedVariantId) {
+                alert('Please select a size.');
+                return; 
+            }
+            if ((hasColorOptions || hasSizeOptions) && !selectedVariantId) {
+                alert('Please make a selection.');
+                return;
             }
             addToCartBtn.textContent = "Adding..."
             const formData ={

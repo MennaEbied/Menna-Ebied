@@ -131,6 +131,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         //add to cart
         const addToCartBtn = cardBody.querySelector('.add-to-cart-btn')
         addToCartBtn.addEventListener('click',()=>{
+             // Check if color/size options actually exist for this product
+            const hasColorOptions = cardBody.querySelector('.color-btns').hasChildNodes();
+            const hasSizeOptions = cardBody.querySelector('.dropdown-options').hasChildNodes();
+
             if (hasColorOptions && !selectedColor) {
                 alert('Please select a color.');
                 return;

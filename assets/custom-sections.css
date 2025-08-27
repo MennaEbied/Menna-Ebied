@@ -619,6 +619,8 @@ body{
       text-align: center;
       flex-wrap: wrap;
       color: #000;
+      padding-left: 10px;
+      padding-right: 10px;
     }
     .hero-button {
       position: absolute;

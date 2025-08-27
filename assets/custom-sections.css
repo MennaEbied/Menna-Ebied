@@ -32,7 +32,8 @@ body{
 .hero-content {
   flex: 1;
   max-width: 500px;
-  margin-left: 0;
+  margin-left: 0;       
+  padding-left: 40px;   
   color: black;
   margin-top: -10px;
   text-align: left;
@@ -42,13 +43,13 @@ body{
   font-size:xx-large;
   font-weight: bold;
   line-height: 1.2;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   text-align: left;
 }
 .hero-subtitle {
   font-size:medium;
   line-height: 1.5;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   text-align: left;
 }
 .desktop-subtitle,
@@ -89,6 +90,7 @@ body{
   transition: background-position 1s ease-in-out;
   text-decoration: none;
   margin: 0 auto;
+  margin-top: 20px;
 }
 .hero-button:hover {
   background-position: left;

@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     let allProducts = [];
     let selectedVariantId = null;
+    let selectedColor = null;
+
 
     try {
         const res = await fetch(`/collections/${collectionHandle}/products.json`);

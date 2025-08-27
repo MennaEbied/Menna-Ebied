@@ -617,6 +617,7 @@ body{
     .mobile-subtitle {
       font-size: 1.3rem;
       text-align: center;
+      flex-wrap: wrap;
       color: #000;
     }
     .hero-button {

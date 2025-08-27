@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     let allProducts = [];
     let selectedVariantId = null;
-    let selectedColor = null;
 
 
     try {
@@ -108,7 +107,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.color-btns button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    selectedColor = color;
                     updateSizes(optionsByColor[color], optionsList, placeholder, sizeDropdown);
                 });
                 colorContainer.appendChild(btn);
@@ -134,25 +132,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         //add to cart
         const addToCartBtn = cardBody.querySelector('.add-to-cart-btn')
         addToCartBtn.addEventListener('click',()=>{
-             // Check if color/size options actually exist for this product
-            const hasColorOptions = cardBody.querySelector('.color-btns').hasChildNodes();
-            const hasSizeOptions = cardBody.querySelector('.dropdown-options').hasChildNodes();
-
-            // Case: both color & size required
-            if (hasColorOptions && hasSizeOptions && (!selectedColor || !selectedVariantId)) {
-                alert('Please select a color and a size.');
-                return;
-            }
-            // Case: only color required
-            if (hasColorOptions && !hasSizeOptions && !selectedColor) {
-                alert('Please select a color.');
-                return;
-            }
-            // Case: only size required
-            if (hasSizeOptions && !hasColorOptions && !selectedVariantId) {
-                alert('Please select a size.');
-                return;
-            }
+            if(!selectedVariantId){
+                alert('please select a size')
+                 return  
+             }
             addToCartBtn.textContent = "Adding..."
             const formData ={
                 'items':[{

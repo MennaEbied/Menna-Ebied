@@ -240,7 +240,9 @@ body{
   }
   
   .mobile-dropdown .button-top {
-    display: inline-block;
+    display: block;         
+    max-width: 200px;     
+    margin: 0 auto;
     background: linear-gradient(to left, #FFD700 50%, #000 50%);
     background-size: 200% 100%;
     background-position: right;

@@ -61,10 +61,6 @@ body{
   align-items: center;
   gap: 15px;
 }
-.mobile-subtitle{
-  font-size: 1.2rem;
-  color: #000;
-}
 .mobile-logo{
   position: absolute;
   left: 50%;
@@ -613,14 +609,15 @@ body{
     .hero-title {
       font-size: 2.5rem;
       text-align: center;
-      margin-top: 10px;
+      padding-top: 8px;
     }
     .desktop-subtitle {
       display: none;
     }
-    .hero-subtitle {
+    .mobile-subtitle {
       font-size: 1.3rem;
       text-align: center;
+      color: #000;
     }
     .hero-button {
       position: absolute;

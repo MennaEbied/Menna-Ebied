@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.color-btns button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
+                    selectedColor = color;
                     updateSizes(optionsByColor[color], optionsList, placeholder, sizeDropdown);
                 });
                 colorContainer.appendChild(btn);
@@ -137,16 +138,19 @@ document.addEventListener('DOMContentLoaded', async function() {
             const hasColorOptions = cardBody.querySelector('.color-btns').hasChildNodes();
             const hasSizeOptions = cardBody.querySelector('.dropdown-options').hasChildNodes();
 
-            if (hasColorOptions && !selectedColor) {
+            // Case: both color & size required
+            if (hasColorOptions && hasSizeOptions && (!selectedColor || !selectedVariantId)) {
+                alert('Please select a color and a size.');
+                return;
+            }
+            // Case: only color required
+            if (hasColorOptions && !hasSizeOptions && !selectedColor) {
                 alert('Please select a color.');
                 return;
             }
-            if (hasSizeOptions && !selectedVariantId) {
+            // Case: only size required
+            if (hasSizeOptions && !hasColorOptions && !selectedVariantId) {
                 alert('Please select a size.');
-                return; 
-            }
-            if ((hasColorOptions || hasSizeOptions) && !selectedVariantId) {
-                alert('Please make a selection.');
                 return;
             }
             addToCartBtn.textContent = "Adding..."

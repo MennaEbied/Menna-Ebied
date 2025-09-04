@@ -1,10 +1,10 @@
 // DROPDOWN MENU
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){ //this ensures that js doesn't try to find html elements before they exists
     const toggle = document.querySelector('.mobile-menu-toggle');
     const dropdown = document.getElementById('mobile-dropdown');
 
-    if(toggle && dropdown){
+    if(toggle && dropdown){ //checks if toggle and dropdown are successfully found
         toggle.addEventListener('click', function(){
             this.classList.toggle('active');
             const isVisible = dropdown.style.display === 'block'
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // FETCHING PRODUCTS
 document.addEventListener('DOMContentLoaded', async function() {
-    const app = document.getElementById('tisso-vison-app');
+    const app = document.getElementById('tisso-vison-app'); //finds the main container element
     if (!app) return;
 
-    const collectionHandle = app.dataset.collectionHandle;
+    const collectionHandle = app.dataset.collectionHandle; //passing collection handle from liquid to js
     const grid = document.getElementById('product-grid');
     const card = document.getElementById('product-card');
     const closeButton = card.querySelector('.close'); 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const res = await fetch(`/collections/${collectionHandle}/products.json`);
         if (!res.ok) throw new Error("collection not found");
         const data = await res.json();
-        allProducts = data.products.slice(0, 6);
+        allProducts = data.products.slice(0, 6); //returns the first 6 products
     } catch (err) {
         console.error('failed to load products', err);
         grid.innerHTML = `<p style="text-align:center">Error loading products</p>`;
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const cardBody = card.querySelector('.card-body');
         const firstVariant = product.variants[0];
         const imageUrl = product.featured_image || product.images[0]?.src;
-        const descriptionHtml = product.body_html ? product.body_html.replace(/<[^>]*>?/gm, '') : 'No description available.';
+        const descriptionHtml = product.body_html ? product.body_html.replace(/<[^>]*>?/gm, '') : 'No description available.'; //return plain text only
         
         cardBody.innerHTML = `
           <div class="top-card">
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     
         const optionsByColor = {};
         product.variants.forEach(variant => {
-            const color = colorOptionInfo ? variant[`option${colorOptionInfo.position}`] : 'Default';
+            const color = colorOptionInfo ? variant[`option${colorOptionInfo.position}`] : 'Default'; // this  first finds the positionof the color option and then dynamically accesses the correct property on the variant
             const size = sizeOptionInfo ? variant[`option${sizeOptionInfo.position}`] : null;
     
             if (!optionsByColor[color]) optionsByColor[color] = [];
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         document.body.style.overflow = "hidden";
     }
 
-    function updateSizes(sizes, list, placeholder, sizeDropdown) {
+    function updateSizes(sizes, list, placeholder, sizeDropdown) { //called whenever a new color is selected
         list.innerHTML = '';
         placeholder.textContent = 'Choose your size';
         selectedVariantId = null
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     overlay?.addEventListener('click', closeCard);
 
     grid.innerHTML = ''; 
-    allProducts.forEach(product => {
+    allProducts.forEach(product => { //create element, set innerHTML, add listener
         const productEl = document.createElement('div');
         productEl.className = 'product-item';
         const imgUrl = product.featured_image || product.images[0]?.src;
